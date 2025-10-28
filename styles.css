@@ -86,6 +86,31 @@ html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe U
 /* simple responsive */
 @media (max-width:900px){.hero-content{flex-direction:column-reverse;align-items:flex-start}.hero-image{width:100%;flex:auto}.logo-text{font-size:22px}.hero-title{font-size:30px}}
 
+/* Ensure hero content doesn't get hidden under the fixed header on small screens */
+@media (max-width:900px){
+  .hero{
+    /* reserve safe area for notch; don't use background image on mobile */
+    padding-top: env(safe-area-inset-top);
+    min-height: calc(100vh - var(--site-header-height,88px));
+    background: none;
+  }
+  /* center hero content vertically between header and bottom */
+  .hero-content{
+    gap:20px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    min-height: calc(100vh - var(--site-header-height,88px));
+  }
+  /* Move the textbox down a lot so the heading sits lower on the screen */
+  .hero-text{padding-top:160px;padding-bottom:0;text-align:center}
+  .hero-title{margin-top:0}
+  /* hide photo card / hero image on mobile (we removed the background) */
+  .photo-card{display:none}
+  .hero-image{display:none}
+}
+
 /* Gallery removed - styles cleaned up */
 
 /* Small utility styles (if not already present in global styles.css) */
@@ -1074,41 +1099,42 @@ textarea.form-input{min-height:140px}
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .nav {
-    display: none;
-  }
+  .nav { display: none; }
 
-  .hero-content {
-    flex-direction: column;
-    text-align: center;
-  }
+  .hero-content { flex-direction: column; text-align: center; }
+  .hero-title { font-size: 36px; }
+  .hero-subtitle { font-size: 18px; }
 
-  .hero-title {
-    font-size: 36px;
-  }
+  .collection-grid { grid-template-columns: 1fr; }
+  .about-content { flex-direction: column; }
+  .contact-content { grid-template-columns: 1fr; }
+  .section-title { font-size: 32px; }
 
-  .hero-subtitle {
-    font-size: 18px;
+  /* Footer - mobile-friendly adjustments */
+  .footer{
+    padding: 48px 0 20px; /* reduce top padding and tighten */
   }
+  .footer::before{ display:none; } /* hide large decorative dragonfly on small screens */
+  .footer-grid{ grid-template-columns:1fr; gap:18px; justify-items:center; padding:0 18px }
+  .footer-brand{ font-size:36px; line-height:1; text-align:center }
+  .footer-logo{ justify-content:center }
+  .footer-dragonfly{ height:28px; opacity:0.85 }
 
-  .collection-grid {
-    grid-template-columns: 1fr;
-  }
+  /* make each footer column span full width and center content */
+  .footer-col--links,
+  .footer-col--social,
+  .footer-col--contact,
+  .footer-col--meta{ grid-column:1 / -1; justify-self:center; text-align:center; }
 
-  .about-content {
-    flex-direction: column;
-  }
+  .footer-col--links .footer-nav,
+  .footer-col--contact,
+  .footer-col--social,
+  .footer-col--meta { max-width: 100%; }
 
-  .contact-content {
-    grid-template-columns: 1fr;
-  }
+  /* social buttons in a row for compactness */
+  .footer-col--social .social-buttons{ flex-direction:row; gap:12px; justify-content:center }
 
-  .section-title {
-    font-size: 32px;
-  }
-
-  .footer-grid{grid-template-columns:1fr;gap:18px}
-  .footer-bottom{flex-direction:column;gap:8px;text-align:center}
+  .footer-bottom{ flex-direction:column; gap:8px; text-align:center }
 }
 
 @media (max-width: 480px) {
