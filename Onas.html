@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>O nás — NiPeAlies</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo">
+          <img src="design/vazkar.svg" alt="NiPeAlies logo">
+          <img src="design/fontr.svg" alt="NiPeAlies font">
+        </div>
+        <nav class="nav">
+          <a href="index.html#home" class="nav-link">Domů</a>
+          <a href="kolekce.html" class="nav-link">Kolekce</a>
+          <a href="about.html" class="nav-link">O nás</a>
+          <a href="kontakt.html" class="nav-link">Kontakt</a>
+        </nav>
+        <a href="kosik.html" class="cart-button" aria-label="Košík">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M6 6h15l-1.4 7.2a2 2 0 0 1-2 1.6H9.4a2 2 0 0 1-2-1.6L6 6z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="10" cy="20" r="1" fill="currentColor"/>
+            <circle cx="18" cy="20" r="1" fill="currentColor"/>
+          </svg>
+          <span class="cart-badge" aria-hidden="true">0</span>
+          <span class="cart-label">Košík</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Three feature sections: each with text + image (alternating) -->
+  <section class="feature-section patterned">
+      <div class="container feature-row">
+        <div class="feature-text">
+          <h2>Zakladatelka a vize</h2>
+          <p>Nina začala šít plavky pro sebe a přátele — postupně z toho vznikla značka, která klade důraz na pohodlí, odolnost a nadčasový design. Vše testujeme v reálném prostředí: paddleboarding, surf i rodinné výpravy k vodě.</p>
+          <p>Její vize je jednoduchá: vyrábět takové kousky, které vydrží a dělají radost. Každý nový vzor vzniká ze skutečného potřeby a zkoušení — nejsme jen studiem návrhů, jsme i testery našich střihů v praxi.</p>
+          <p>V praxi to znamená, že před nasazením do výroby projde střih několika úpravami podle zpětné vazby testovacích zákaznic a realitních testů na vodě.</p>
+        </div>
+        <div class="feature-image">
+          <img src="img/Onas.webp" alt="Nina u vody">
+        </div>
+      </div>
+    </section>
+
+  <section class="feature-section no-motif">
+      <div class="container feature-row">
+        <div class="feature-image">
+          <img src="img/onas2.jpg" alt="Šití a řemeslo">
+        </div>
+        <div class="feature-text">
+          <h2>Proces a řemeslo</h2>
+          <p>Každý výrobek prochází pečlivým procesem od návrhu přes prototyp až po finální kontrolu. Spolupracujeme s lokálními ateliéry, abychom udrželi kvalitu a minimalizovali odpad.</p>
+          <p>Věnujeme pozornost každému detailu — švy, střihy i výběr nití a pružných vláken, aby konečný výrobek lépe odolával častému používání i praní.</p>
+          <p>Preferujeme menší série, abychom měli nad výrobou kontrolu a mohli reagovat na zpětnou vazbu zákaznic. Díky tomu můžeme implementovat drobné vylepšení rychle a efektivně.</p>
+        </div>
+      </div>
+    </section>
+
+  <section class="feature-section patterned">
+      <div class="container feature-row">
+        <div class="feature-text">
+          <h2>Hodnoty a udržitelnost</h2>
+          <p>Respekt k přírodě a udržitelnost jsou pro nás důležité. Volíme materiály s ohledem na životní prostředí a preferujeme postupy, které snižují produkci odpadu.</p>
+          <p>Naše materiály jsou vybírány tak, aby kombinovaly odolnost a co nejnižší ekologický dopad. Kromě materiálu sledujeme i balení a dopravu tak, aby celková stopa byla co nejmenší.</p>
+          <p>Snažíme se, aby naše plavky měly dlouhý životní cyklus a byly snadno udržovatelné — jednoduchá údržba prodlužuje životnost a snižuje potřebu časté výměny.</p>
+        </div>
+        <div class="feature-image">
+          <img src="img/tropic5.jpg" alt="Hodnoty a udržitelnost">
+        </div>
+      </div>
+    </section>
+
+    <!-- Small CTA (links to collection) -->
+    <section class="final-cta" style="background:var(--bg2);">
+      <div class="container" style="text-align:center;padding:28px 0">
+        <h3>Vyberte si svůj střih</h3>
+        <p class="about-paragraph">Objevte naše nejnovější vzory a střihy, testované v praxi. Najděte si ideální kousek pro vaše vodní dobrodružství.</p>
+        <a href="kolekce.html" class="btn btn-accent">Prohlédnout kolekci</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- navigation and header intentionally kept only at top -->
+
+      <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col footer-col--brand">
+        <div class="footer-logo">
+          <img src="img/vazka.webp" alt="NiPeAlies Dragonfly" class="footer-dragonfly">
+          <!-- wordmark image for a nicer footer heading -->
+          <img src="img/fontp.svg" alt="NiPeAlies" class="footer-wordmark">
+        </div>
+                        <!-- popis odstraněn na žádost - ponecháváme pouze logo a název -->
+                </div>
+
+                <div class="footer-col footer-col--links">
+                    <h4 class="footer-heading">Rychlé odkazy</h4>
+                    <nav aria-label="Footer navigation">
+                        <ul class="footer-nav">
+                            <li><a href="index.html" class="footer-link">Domů</a></li>
+                            <li><a href="kolekce.html" class="footer-link">Kolekce</a></li>
+                            <li><a href="Onas.html" class="footer-link">O nás</a></li>
+                            <li><a href="kontakt.html" class="footer-link">Kontakt</a></li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <div class="footer-col footer-col--social">
+                    <h4 class="footer-heading">Sledujte nás</h4>
+                    <div class="social-buttons">
+                <a href="https://www.instagram.com/nipealies_wetsuit/" target="_blank" class="social-button" aria-label="Instagram">
+                    <!-- Instagram SVG -->
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                              <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                              <path d="M17.5 6.5h.01" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <span>Instagram</span>
+                        </a>
+
+                                                                        <a href="https://www.facebook.com/Nipealies" target="_blank" class="social-button" aria-label="Facebook">
+                                                                                <!-- Facebook filled glyph (consistent with contact icon) -->
+                                                                                <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                                                                    <path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2.7v-2.9h2.7V9.3c0-2.7 1.6-4.2 4-4.2 1.2 0 2.5.2 2.5.2v2.7h-1.4c-1.4 0-1.8.9-1.8 1.8v2h3l-.5 2.9h-2.5v7A10 10 0 0 0 22 12z" fill="currentColor"/>
+                                                                                </svg>
+                                                                                <span>Facebook</span>
+                                                                        </a>
+                    </div>
+                </div>
+                <div class="footer-col footer-col--contact">
+                    <h4 class="footer-heading">Adresa</h4>
+                    <p>
+                    NiPeAlies s.r.o.<br>
+                    Všehrdova 194<br>
+                    500 02 Hradec Králové</p>
+                </div>
+
+                <div class="footer-col footer-col--meta">
+                    <h4 class="footer-heading">Kontaktní údaje</h4>
+                    <p><strong>Telefon:</strong> <a href="tel:+420720312030" class="footer-link">+420 720 312 030</a></p>
+
+                    <p><strong>Email:</strong> <a href="mailto:info@nipealies.cz" class="footer-link">info@nipealies.cz</a></p>
+
+                    <p class="footer-meta">IČO: 22555072</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="footer-copyright">© 2025 NiPeAlies. Všechna práva vyhrazena.</p>
+                <p class="footer-legal">Podmínky používání • Ochrana soukromí</p>
+            </div>
+        </div>
+    </footer>
+
+
+  <script>
+    // Smooth scrolling for navigation links (works for same-page anchors)
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          const headerOffset = 80;
+          const elementPosition = target.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+          window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Form handling (if a contact form exists on this page)
+    var form = document.querySelector('.contact-form');
+    if(form){
+      form.addEventListener('submit', function(e){ e.preventDefault(); alert('Děkujeme za vaši zprávu! Brzy se vám ozveme.'); this.reset(); });
+    }
+
+    // Cart badge init
+    (function(){
+      var badge = document.querySelector('.cart-badge');
+      if(!badge) return;
+      var stored = localStorage.getItem('cartCount');
+      badge.textContent = stored ? stored : '0';
+      window.setCartCount = function(n){
+        var val = Number(n) || 0; badge.textContent = String(val); try{ localStorage.setItem('cartCount', String(val)); }catch(e){}
+      };
+    })();
+  </script>
+</body>
+</html>

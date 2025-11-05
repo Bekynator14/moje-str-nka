@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NiPeAlies - Dámské plavky a dětské neopreny</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Drobná přizpůsobení byla přesunuta do externího souboru `styles.css` -->
+    <!-- Footer wordmark styling moved to styles.css -->
+</head>
+<body>
+    <!-- Header (unified across site) -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="design/vazkar.svg" alt="NiPeAlies logo">
+                    <img src="design/fontr.svg" alt="NiPeAlies font">
+                </div>
+                <nav class="nav">
+                    <a href="index.html#home" class="nav-link">Domů</a>
+                    <a href="kolekce.html" class="nav-link">Kolekce</a>
+                    <a href="Onas.html" class="nav-link">O nás</a>
+                    <a href="kontakt.html" class="nav-link">Kontakt</a>
+                </nav>
+                <a href="kosik.html" class="cart-button" aria-label="Košík">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M6 6h15l-1.4 7.2a2 2 0 0 1-2 1.6H9.4a2 2 0 0 1-2-1.6L6 6z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="10" cy="20" r="1" fill="currentColor"/>
+                        <circle cx="18" cy="20" r="1" fill="currentColor"/>
+                    </svg>
+                    <span class="cart-badge" aria-hidden="true">0</span>
+                    <span class="cart-label">Košík</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">Cítit se lehce. Vypadat sebejistě. U vody.</h1>
+                    <p class="hero-subtitle">Ruční vzory, příjemné střihy a materiály, které fungují v průhledné vodě i na slunci. Kolekce navržené v Česku pro každodenní radost u vody.</p>
+                    <p class="hero-lead">Osobní přístup • Rychlé odeslání • Udržitelná strategie</p>
+                    <div class="hero-actions">
+                        <a href="kolekce.html" class="social-button hero-cta">Prohlédnout kolekci</a>
+                        <a href="Onas.html" class="social-button hero-cta">O značce</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <!-- Vloženo: úvodní fotka z projektu -->
+                    <div class="photo-card">
+                        <img src="img/pohled.jpg" alt="Pohled NiPeAlies">
+                    </div>
+                    <div class="decorative-circle circle-1"></div>
+                    <div class="decorative-circle circle-2"></div>
+                </div>
+            </div>
+            <!-- dekorativní motiv (volitelně) -->
+            <div class="hero-dragonfly" aria-hidden="true" style="position:absolute;right:0;top:30px;opacity:0.06">
+                <img src="https://nipealies.cz/wp-content/uploads/2025/10/yogumm08nsh5wszeqbwy.webp" alt="" style="height:160px;filter:none">
+            </div>
+        </div>
+    </section>
+
+    <!-- Collection Section -->
+    <section id="kolekce" class="collection">
+        <div class="container">
+            <h2 class="section-title">Naše kolekce</h2>
+            <p class="section-subtitle">Objevte naši pečlivě vybranou kolekci plavek a neoprenů</p>
+            
+            <div class="collection-grid">
+                <!-- One-piece without sleeves -->
+                <a href="produkt-1.html" class="collection-card">
+                    <div class="card-image">
+                        <img src="img/plavky-beurukavu.webp" loading="lazy" alt="Jednodílné plavky bez rukávu">
+                        <div class="card-overlay">
+                            <span class="card-tag">Bestseller</span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Dámské jednodílné plavky bez rukávu</h3>
+                        <p class="card-description">Elegantní jednodílné plavky s moderními vzory. Perfektní pro plavání i opalování. Vyrobeno z kvalitních materiálů pro maximální pohodlí.</p>
+                    </div>
+                </a>
+
+                <!-- One-piece with sleeves -->
+                <a href="produkt-2.html" class="collection-card">
+                    <div class="card-image">
+                        <img src="img/plavky-rukav.webp" loading="lazy" alt="Jednodílné plavky s rukávem">
+                        <div class="card-overlay">
+                            <span class="card-tag">Rukáv</span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Dámské jednodílné plavky s rukávem</h3>
+                        <p class="card-description">Stylové plavky s rukávy pro extra ochranu před sluncem. Ideální pro aktivní ženy, které chtějí kombinovat styl s funkcionalitou.</p>
+                    </div>
+                </a>
+
+                <!-- Kids wetsuit -->
+                <a href="produkt-3.html" class="collection-card">
+                    <div class="card-image">
+                        <img src="img/děti.webp" loading="lazy" alt="Dětský neopren">
+                        <div class="card-overlay">
+                            <span class="card-tag">Pro děti</span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Scuba – dětský mokrý neopren</h3>
+                        <p class="card-description">Kvalitní neopreny pro děti s veselými vzory. Zajišťují tepelnou ochranu a pohodlí při vodních aktivitách.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col footer-col--brand">
+            <div class="footer-logo">
+                <img src="img/vazka.webp" alt="NiPeAlies Dragonfly" class="footer-dragonfly">
+                <!-- wordmark image for a nicer footer heading -->
+                <img src="img/fontp.svg" alt="NiPeAlies" class="footer-wordmark">
+            </div>
+                        <!-- popis odstraněn na žádost - ponecháváme pouze logo a název -->
+                </div>
+
+                <div class="footer-col footer-col--links">
+                    <h4 class="footer-heading">Rychlé odkazy</h4>
+                    <nav aria-label="Footer navigation">
+                        <ul class="footer-nav">
+                            <li><a href="#home" class="footer-link">Domů</a></li>
+                            <li><a href="#kolekce" class="footer-link">Kolekce</a></li>
+                            <li><a href="#o-nas" class="footer-link">O nás</a></li>
+                            <li><a href="#kontakt" class="footer-link">Kontakt</a></li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <div class="footer-col footer-col--social">
+                    <h4 class="footer-heading">Sledujte nás</h4>
+                    <div class="social-buttons">
+                <a href="https://www.instagram.com/nipealies_wetsuit/" target="_blank" class="social-button" aria-label="Instagram">
+                    <!-- Instagram SVG -->
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                              <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                              <path d="M17.5 6.5h.01" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <span>Instagram</span>
+                        </a>
+
+                                                                        <a href="https://www.facebook.com/Nipealies" target="_blank" class="social-button" aria-label="Facebook">
+                                                                                <!-- Facebook filled glyph (consistent with contact icon) -->
+                                                                                <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                                                                    <path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2.7v-2.9h2.7V9.3c0-2.7 1.6-4.2 4-4.2 1.2 0 2.5.2 2.5.2v2.7h-1.4c-1.4 0-1.8.9-1.8 1.8v2h3l-.5 2.9h-2.5v7A10 10 0 0 0 22 12z" fill="currentColor"/>
+                                                                                </svg>
+                                                                                <span>Facebook</span>
+                                                                        </a>
+                    </div>
+                </div>
+                <div class="footer-col footer-col--contact">
+                    <h4 class="footer-heading">Adresa</h4>
+                    <p>
+                    NiPeAlies s.r.o.<br>
+                    Všehrdova 194<br>
+                    500 02 Hradec Králové</p>
+                </div>
+
+                <div class="footer-col footer-col--meta">
+                    <h4 class="footer-heading">Kontaktní údaje</h4>
+                    <p><strong>Telefon:</strong> <a href="tel:+420720312030" class="footer-link">+420 720 312 030</a></p>
+
+                    <p><strong>Email:</strong> <a href="mailto:info@nipealies.cz" class="footer-link">info@nipealies.cz</a></p>
+
+                    <p class="footer-meta">IČO: 22555072</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="footer-copyright">© 2025 NiPeAlies. Všechna práva vyhrazena.</p>
+                <p class="footer-legal">Podmínky používání • Ochrana soukromí</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerOffset = 80;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Safe form submit (if form exists)
+        var contactForm = document.querySelector('.contact-form');
+        if(contactForm){
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Děkujeme za vaši zprávu! Brzy se vám ozveme.');
+                this.reset();
+            });
+        }
+
+        // Initialize cart badge from localStorage and expose setter
+        (function(){
+            var badge = document.querySelector('.cart-badge');
+            if(!badge) return;
+            var stored = localStorage.getItem('cartCount');
+            badge.textContent = stored ? stored : '0';
+            window.setCartCount = function(n){
+                var val = Number(n) || 0;
+                badge.textContent = String(val);
+                try{ localStorage.setItem('cartCount', String(val)); }catch(e){}
+            };
+        })();
+    </script>
+</body>
+</html>
