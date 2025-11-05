@@ -5,8 +5,12 @@
   --bg1:#FFFFFF;       /* white */
   --muted:#2b5f6b;     /* muted/darker cyan for secondary text */
   --site-header-height:88px;
+  /* Pink palette from provided SVG */
+  --pink: #f4a8c4;
+  --pink-light: #fdebf2;
+  --pink-contrast: #7a153a;
 }
-html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;background:linear-gradient(180deg,var(--bg2),var(--bg1));color:var(--accent)}
+html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;background:var(--bg1);color:var(--accent)}
 .container{max-width:1100px;margin:0 auto;padding:0 20px}
 .header{position:sticky;top:0;backdrop-filter:blur(6px);background:rgba(255,255,255,0.55);border-bottom:1px solid rgba(15,23,42,0.04);z-index:1100}
 .header-content{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
@@ -303,6 +307,9 @@ body {
 /* small lead under subtitle */
 .hero-lead{font-size:15px;color:rgba(255,255,255,0.85);margin-bottom:18px;font-weight:600}
 
+/* Ensure the hero lead on the homepage is always white for contrast */
+.hero .hero-lead{color:#ffffff !important}
+
 /* hero actions */
 .hero-actions{display:flex;gap:12px;align-items:center}
 .btn-secondary{background:transparent;border:1px solid var(--accent);color:var(--accent);padding:10px 18px;border-radius:999px}
@@ -391,9 +398,179 @@ body {
   box-shadow: 0 12px 30px rgba(13,45,50,0.12);
 }
 
+/* Footer wordmark / logo sizing (moved from index.html) */
+/* Zvýšeno ~3× oproti předchozím hodnotám podle požadavku */
+.footer-logo{display:flex;align-items:center;gap:42px}
+.footer-dragonfly{height:168px;width:auto}
+.footer-wordmark{height:144px;width:auto;display:block}
+
+@media (max-width:640px){
+  .footer-dragonfly{height:132px}
+  .footer-wordmark{height:108px}
+}
+
+
+/* Gallery styles */
+.gallery-section{padding:48px 0}
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:14px;margin-top:18px}
+.gallery-thumb{background:transparent;border:0;padding:0;cursor:pointer;border-radius:10px;overflow:hidden;display:block}
+.gallery-thumb img{width:100%;height:120px;object-fit:cover;display:block;border-radius:10px;border:1px solid rgba(6,54,54,0.04)}
+
+/* Lightbox */
+.lightbox{position:fixed;left:0;top:0;right:0;bottom:0;display:flex;align-items:center;justify-content:center;background:rgba(4,8,10,0.6);opacity:0;pointer-events:none;transition:opacity 180ms ease;z-index:2200}
+.lightbox.open{opacity:1;pointer-events:auto}
+.lightbox-img{max-width:92vw;max-height:82vh;border-radius:12px;box-shadow:0 20px 60px rgba(2,8,10,0.6)}
+.lightbox-close{position:absolute;top:22px;right:22px;background:transparent;border:0;color:#fff;font-size:34px;cursor:pointer}
+.lightbox-caption{position:fixed;left:50%;transform:translateX(-50%);bottom:8vh;color:#fff;margin-top:12px;font-size:16px}
+
+/* Lightbox navigation arrows */
+.lightbox-prev,
+.lightbox-next{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background:rgba(0,0,0,0.45);
+  color:#fff;
+  border:0;
+  width:56px;
+  height:56px;
+  border-radius:999px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  font-size:30px;
+  cursor:pointer;
+  box-shadow:0 10px 30px rgba(0,0,0,0.4);
+}
+.lightbox-prev{left:22px}
+.lightbox-next{right:22px}
+.lightbox-prev:hover,.lightbox-next:hover{background:rgba(0,0,0,0.6);transform:translateY(-50%) scale(1.02)}
+
+/* fade transition for the lightbox image */
+.lightbox-img{transition:opacity 280ms ease;opacity:1}
+
+@media(max-width:720px){
+  .lightbox-prev,.lightbox-next{width:44px;height:44px;font-size:22px}
+}
+
+/* small responsiveness */
+@media (max-width:600px){.gallery-thumb img{height:92px}.lightbox-img{max-width:94vw;max-height:78vh}}
+
+/* Back button on product pages */
+.back-btn{display:inline-block;margin-bottom:12px;padding:8px 12px;border-radius:10px;background:transparent;border:1px solid rgba(29,73,86,0.06);color:var(--accent);text-decoration:none;font-weight:700}
+.back-btn:hover{background:var(--accent-light)}
+
+/* Size tiles */
+.size-tiles{display:flex;gap:8px;align-items:center}
+.size-tile{background:#fff;border:1px solid rgba(29,73,86,0.06);padding:6px 10px;border-radius:8px;cursor:pointer;font-weight:700;color:var(--accent);min-width:36px;text-align:center;box-shadow:inset 0 1px 0 rgba(255,255,255,0.6)}
+.size-tile:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(6,54,54,0.06)}
+.size-tile.active{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:none}
+
+/* Styles for product page size buttons (markup uses .size) */
+.sizes{display:flex;gap:8px;align-items:center}
+.sizes .size{background:#fff;border:1px solid rgba(29,73,86,0.06);padding:6px 10px;border-radius:8px;cursor:pointer;font-weight:700;color:var(--accent);min-width:36px;text-align:center;box-shadow:inset 0 1px 0 rgba(255,255,255,0.6)}
+.sizes .size:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(6,54,54,0.06)}
+.sizes .size.selected{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:none}
+
+/* Color variant buttons */
+.colors{display:flex;gap:8px;align-items:center}
+.color-btn{background:#fff;border:1px solid rgba(29,73,86,0.06);padding:8px 12px;border-radius:8px;cursor:pointer;font-weight:700;color:var(--accent)}
+.color-btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(6,54,54,0.06)}
+.color-btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+
+/* Quantity input visual upgrade */
+.quantity { display:flex; gap:12px; align-items:center; margin-top:8px }
+.quantity label{font-weight:700;color:var(--accent);margin-right:6px}
+.quantity input[type="number"]{width:84px;padding:10px 12px;border-radius:10px;border:1px solid rgba(29,73,86,0.08);box-shadow:inset 0 2px 6px rgba(2,8,10,0.02);font-weight:700;text-align:center}
+.quantity input[type="number"]::-webkit-outer-spin-button, .quantity input[type="number"]::-webkit-inner-spin-button{margin:0}
+
+/* Prominent Add to cart button */
+.add-cart{padding:12px 22px;border-radius:999px;border:none;font-weight:800;cursor:pointer}
+.add-cart.btn-primary{background:var(--pink);color:#fff;box-shadow:0 18px 40px rgba(244,168,196,0.10);font-size:18px}
+.add-cart:hover{transform:translateY(-2px)}
+
+/* If you want the small left button style (historic) keep .btn-secondary, but we removed wishlist */
+
+/* Collection card visual polish (small, safe rules) */
+.collection-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.collection-card{display:block;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 8px 20px rgba(6,54,54,0.03);text-decoration:none;color:inherit}
+.card-image img{width:100%;height:220px;object-fit:cover;display:block}
+.card-content{padding:14px}
+.card-title{font-size:18px;margin:0 0 8px}
+.card-description{color:var(--muted);font-size:14px}
+.card-tag{background:var(--pink-light);color:var(--pink-contrast);padding:6px 8px;border-radius:999px;font-weight:700;font-size:12px}
+
+/* Responsive product layout tweaks */
+@media (max-width:900px){
+  .product-grid{grid-template-columns:1fr !important}
+  .product-aside{order:-1}
+}
+
+/* Small helper for add-to-cart action */
+.add-to-cart{white-space:nowrap}
+
+/* Ensure product/collection images are shown in full color (override any decorative grayscale) */
+.collection-card .card-image img,
+.product-aside img,
+.photo-card img,
+.card-image img,
+.hero-image img,
+.collection-grid img{
+  filter: none !important;
+  -webkit-filter: none !important;
+  opacity: 1 !important;
+}
+
 /* Section Styles */
 section {
   padding: 80px 0;
+  /* ensure anchored headings sit below the fixed header */
+  scroll-margin-top: calc(var(--site-header-height,88px) + 16px);
+}
+
+/* Collection header + sort control */
+.collection-header{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:20px;
+  flex-wrap:wrap;
+  margin-bottom:22px;
+}
+.collection.page-start{
+  /* Reserve extra space under the fixed header so the title sits lower */
+  padding-top: calc(var(--site-header-height, 88px) + 40px);
+}
+.contact, #kontakt {
+  /* Match collection spacing so contact heading sits lower under the fixed header */
+  padding-top: calc(var(--site-header-height, 88px) + 40px);
+}
+.collection-header-left{max-width:72%;}
+.collection-header .page-title{font-size:36px;margin:0 0 8px;color:var(--accent);letter-spacing:0.2px}
+.collection-header .page-lead{margin:0;color:var(--muted);font-size:16px}
+.collection-sort{margin-left:auto;display:flex;align-items:center;gap:12px}
+.sort-label{font-size:14px;color:var(--muted);font-weight:600}
+.custom-select{position:relative;display:inline-block}
+.sort-select{
+  -webkit-appearance:none;
+  -moz-appearance:none;
+  appearance:none;
+  padding:10px 38px 10px 14px;
+  border-radius:12px;
+  border:1px solid rgba(2,16,18,0.06);
+  background:#fff;
+  font-weight:700;
+  color:var(--accent);
+  box-shadow:0 6px 18px rgba(4,20,22,0.04);
+}
+.custom-select .select-icon{position:absolute;right:10px;top:50%;transform:translateY(-50%);pointer-events:none;color:var(--muted)}
+
+@media(max-width:720px){
+  .collection-header-left{max-width:100%}
+  .collection-header{align-items:flex-start}
+  .collection-header .page-title{font-size:28px}
+  .collection-sort{width:100%;margin-top:12px;justify-content:flex-start}
 }
 
 .section-title {
@@ -411,10 +588,261 @@ section {
   margin-bottom: 60px;
 }
 
+
+/* --- Navigation appearance: dark base, pink hover + animated underline --- */
+/* keep pink variables defined earlier in :root; just change nav link behaviour */
+.nav-link{
+  color: var(--accent); /* dark base */
+  position: relative; /* for underline pseudo-element */
+  transition: color 200ms ease;
+}
+.nav-link::after{
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--pink);
+  transition: width 240ms cubic-bezier(.2,.9,.2,1);
+}
+.nav-link:hover{
+  color: var(--pink);
+}
+.nav-link:hover::after{
+  width: 100%;
+}
+
+/* Cart button: keep previous styling but use pink accent for hover only */
+.cart-button{
+  background-color: var(--accent); /* dark */
+  color: #ffffff;
+  box-shadow: 0 10px 28px rgba(6,54,54,0.12);
+}
+.cart-button:hover{ transform: translateY(-3px); filter: brightness(0.94); }
+
+/* Cart badge: use light pink with dark pink text */
+.cart-badge{
+  background:var(--pink-light) !important;
+  color:var(--pink-contrast) !important;
+  box-shadow: 0 6px 14px rgba(122,21,58,0.08);
+}
+
+/* Also make primary buttons pink if they use .btn-primary (optional, keeps consistent look) */
+.btn-primary{
+  background-color:var(--pink) !important;
+  color:#fff !important;
+  border-color: rgba(255,77,138,0.06) !important;
+  box-shadow: 0 12px 30px rgba(255,77,138,0.08);
+}
+
+/* Onas page specific styles */
+.about-hero{padding:calc(var(--site-header-height,88px) + 120px) 0 36px; scroll-margin-top: calc(var(--site-header-height,88px) + 32px);}
+.about-hero-inner{display:flex;gap:36px;align-items:center}
+.hero-copy{flex:1}
+.hero-heading{font-size:36px;color:var(--accent);margin:0 0 12px}
+.hero-lead{color:var(--muted);margin-bottom:16px}
+.hero-photo{flex:0 0 420px}
+.hero-photo-img{width:100%;height:420px;object-fit:cover;border-radius:14px;box-shadow:0 18px 50px rgba(4,20,22,0.06)}
+
+.story-section{padding:32px 0}
+.story-grid{display:grid;grid-template-columns:1fr 320px;gap:28px;align-items:start}
+.story-text h2{font-size:28px;margin-bottom:12px;color:var(--accent)}
+.story-text p{color:var(--muted);line-height:1.8;margin-bottom:12px}
+.story-aside .values{background:#fff;padding:16px;border-radius:10px;border:1px solid rgba(2,16,18,0.04);margin-bottom:14px}
+.values ul{list-style:disc;margin-left:18px;color:var(--muted)}
+.contact-card{background:linear-gradient(180deg,var(--pink-light),#fff);padding:16px;border-radius:10px}
+
+.gallery-section{padding:28px 0}
+.gallery-grid{display:grid;grid-template-columns:2fr 1fr;gap:12px;align-items:start}
+.gallery-main img{width:100%;height:100%;object-fit:cover;border-radius:14px;box-shadow:0 20px 60px rgba(4,20,22,0.06)}
+.gallery-side img{width:100%;height:150px;object-fit:cover;border-radius:10px;margin-bottom:10px}
+
+.final-cta{padding:28px 0}
+.final-cta-inner{display:flex;justify-content:space-between;align-items:center;gap:18px}
+
+@media(max-width:1000px){
+  .about-hero-inner{flex-direction:column-reverse}
+  .hero-photo-img{height:320px}
+  .story-grid{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:1fr 1fr}
+  .gallery-side img{height:120px}
+  .final-cta-inner{flex-direction:column;align-items:flex-start}
+}
+
+@media(max-width:720px){
+  .hero-heading{font-size:26px}
+  .hero-photo-img{height:200px}
+  .gallery-side img{height:100px}
+}
+
+/* Feature sections (text + image) used on O nás */
+.feature-section{padding:48px 0}
+.feature-row{display:grid;grid-template-columns:1fr 460px;gap:36px;align-items:center}
+.feature-row.reverse{grid-template-columns:460px 1fr}
+.feature-text h2{font-size:26px;color:var(--accent);margin-bottom:10px}
+.feature-text p{color:var(--muted);line-height:1.8;margin-bottom:10px}
+.feature-image img{width:100%;height:320px;object-fit:cover;border-radius:12px;box-shadow:0 18px 50px rgba(4,20,22,0.06)}
+
+
+@media(max-width:1000px){
+  .feature-row, .feature-row.reverse{grid-template-columns:1fr;}
+  .feature-image img{height:260px}
+}
+
+@media(max-width:720px){
+  .feature-image img{height:200px}
+  .feature-text h2{font-size:20px}
+}
+
+/* Alternating colored sections and subtle dragonfly pattern */
+.feature-section{position:relative;overflow:visible}
+.feature-section:nth-of-type(odd){background:linear-gradient(180deg,rgba(255,255,255,0.98),transparent)}
+.feature-section:nth-of-type(even){background:var(--bg2)}
+
+/* Single decorative motif for non-patterned sections (keeps previous look) */
+.feature-section:not(.patterned)::before{
+  content:"";
+  position:absolute;
+  right:8%;
+  top:10%;
+  width:380px;
+  height:220px;
+  background-image:url('img/vazka.webp');
+  background-repeat:no-repeat;
+  background-position:center;
+  background-size:contain;
+  opacity:0.06;
+  pointer-events:none;
+  transform:rotate(6deg);
+}
+
+/* Patterned (tiled) variant - use when you want the repeating dragonfly texture like on Kolekce -> Vzory a barvy */
+.feature-section.patterned::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: url('img/vazka.webp');
+  background-repeat: repeat;
+  background-position: center top;
+  background-size: 120px; /* tile size, tweakable */
+  opacity: 0.10; /* a little stronger than single motif but still subtle */
+  mix-blend-mode: multiply;
+  transform: rotate(-3deg);
+}
+
+/* Harmonizovat fotografie: jemné odbarvení/tónování, tenký rámeček a overlay pro jednotný look */
+.feature-image img{
+  filter: saturate(0.95) contrast(1.03) brightness(0.98);
+  border: 1px solid rgba(2,16,18,0.04);
+  transition: transform 240ms ease, box-shadow 240ms ease;
+}
+/* removed empty ::after rule (not needed) */
+.feature-image:hover img{transform:translateY(-6px);box-shadow:0 28px 70px rgba(4,20,22,0.12)}
+
+/* Reduce pattern intensity on small screens to keep readability */
+@media(max-width:1000px){
+  .feature-section:not(.patterned)::before,
+  .feature-section.patterned::before{display:none}
+}
+
+/* Explicit: allow opting out of any motif on a section */
+.feature-section.no-motif::before{display:none !important}
+
+/* Ensure first feature section starts below fixed header */
+.feature-section:first-of-type{padding-top:calc(var(--site-header-height,88px) + 48px)}
+
+@media(max-width:900px){
+  .feature-section:first-of-type{padding-top:calc(var(--site-header-height,88px) + 20px)}
+}
+
 /* Collection Section */
 .collection {
   background-color: #ffffff;
+  position: relative; /* create stacking context for decorative backgrounds */
+  overflow: hidden;
 }
+
+/* Decorative motifs for the 'Naše kolekce' section */
+.collection::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 0;
+  /* layered decorative svgs: subtle left and right motifs */
+  background-image: url('img/6.svg'), url('img/7.svg');
+  background-repeat: no-repeat, no-repeat;
+  background-position: left 6% top 8%, right 6% bottom 6%;
+  background-size: 220px, 260px;
+  opacity: 0.14;
+  filter: contrast(105%) saturate(92%);
+  transform: translateZ(0);
+}
+
+/* Ensure collection content sits above decorative motifs */
+.collection > .container{ position: relative; z-index: 1; }
+
+/* Extra decorative motifs and subtle motion for the collection section */
+.collection::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 0;
+  /* Use multiple instances of the two motifs to create a denser pattern */
+  background-image: url('img/6.svg'), url('img/7.svg'), url('img/6.svg'), url('img/7.svg'), url('img/6.svg'), url('img/7.svg'), url('img/6.svg'), url('img/7.svg');
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+  background-position: left 6% top 8%, right 6% bottom 6%, 20% 18%, 80% 22%, 35% 62%, 65% 66%, 50% 12%, 10% 72%;
+  background-size: 260px, 320px, 180px, 200px, 120px, 140px, 90px, 110px;
+  opacity: 0.16;
+  mix-blend-mode: multiply;
+  filter: contrast(100%) saturate(92%);
+  transform: rotate(-1.8deg);
+}
+
+.collection::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 0;
+  /* multiple gently floating motifs layered above the main background but below content */
+  background-image: url('img/6.svg'), url('img/7.svg'), url('img/6.svg'), url('img/7.svg'), url('img/6.svg');
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+  background-position: 18% 36%, 82% 18%, 50% 10%, 42% 40%, 68% 56%;
+  background-size: 120px, 160px, 90px, 110px, 100px;
+  opacity: 0.10;
+  transform: translateZ(0);
+  animation: floatMotif 14s ease-in-out infinite;
+}
+
+@keyframes floatMotif {
+  0%{ transform: translateY(0) rotate(-0.5deg); }
+  50%{ transform: translateY(-12px) rotate(0.5deg); }
+  100%{ transform: translateY(0) rotate(-0.5deg); }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .collection::after{ animation: none; }
+}
+
+/* Ensure collection content sits clearly above decorative motifs */
+.collection > .container{ position: relative; z-index: 2; }
 
 .collection-grid {
   display: grid;
@@ -459,13 +887,13 @@ section {
 }
 
 .card-tag {
-  background-color: var(--accent-light);
-  color: var(--accent);
+  background-color: var(--pink);
+  color: #fff;
   padding: 8px 16px;
   border-radius: 20px;
   font-size: 14px;
   font-weight: 700;
-  box-shadow: 0 6px 18px rgba(5,40,44,0.04);
+  box-shadow: 0 8px 22px rgba(244,168,196,0.12);
 }
 
 .card-content {
@@ -513,6 +941,64 @@ section {
 @media (max-width: 600px) {
   /* na drobnějších obrazovkách dekoraci skryjeme kvůli čitelnosti */
   .about-dragonfly { display: none; }
+
+/* Collection / product grid styles */
+.collection .page-title{margin-bottom:6px;font-size:28px}
+.collection .page-lead{margin-bottom:28px;max-width:760px;color:var(--muted);font-size:17px}
+.product-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:40px;margin-top:36px}
+.product-card{background:var(--bg1);border-radius:14px;overflow:hidden;border:1px solid rgba(6,54,54,0.03);box-shadow:0 10px 30px rgba(13,45,50,0.03);display:flex;flex-direction:column}
+.product-media{background:linear-gradient(180deg, #fff, #fbfbfb);display:block}
+.product-media img{width:100%;height:220px;object-fit:cover;display:block}
+.product-body{padding:16px 18px;display:flex;flex-direction:column;gap:12px}
+.product-title{font-size:18px;margin:0;color:var(--accent);font-weight:700}
+.product-meta{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.price{font-size:18px;color:var(--accent);font-weight:700}
+.product-actions{display:flex;align-items:center;gap:12px}
+
+.size-select{position:relative}
+.size-btn{background:transparent;border:1px solid rgba(6,54,54,0.06);padding:8px 12px;border-radius:999px;font-weight:600}
+.size-list{position:absolute;right:0;top:calc(100% + 8px);background:#fff;border-radius:10px;padding:8px;box-shadow:0 14px 30px rgba(2,8,10,0.06);display:flex;flex-direction:column;gap:6px;min-width:120px}
+.size-option{background:transparent;border:none;padding:8px;border-radius:8px;text-align:left}
+.size-select[data-open="false"] .size-list{display:none}
+
+.add-to-cart{padding:8px 12px;border-radius:999px}
+
+@media (max-width:1000px){
+  .product-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:640px){
+  .product-grid{grid-template-columns:1fr}
+  .product-media img{height:360px}
+}
+
+/* Modal styles */
+.modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;z-index:1400}
+.modal.open{display:flex}
+.modal-backdrop{position:absolute;inset:0;background:rgba(2,8,10,0.45)}
+.modal-dialog{position:relative;background:var(--bg1);border-radius:12px;max-width:980px;width:94%;box-shadow:0 40px 120px rgba(2,8,10,0.2);overflow:hidden}
+.modal-close{position:absolute;right:12px;top:12px;border:none;background:transparent;font-size:18px;padding:8px;cursor:pointer}
+.modal-grid{display:grid;grid-template-columns:1fr 420px;gap:0}
+.modal-media img{width:100%;height:100%;object-fit:cover;display:block}
+.modal-media{background:#fff;min-height:360px}
+.modal-body{padding:24px}
+
+@media (max-width:900px){
+  .modal-grid{grid-template-columns:1fr}
+  .modal-media{min-height:260px}
+}
+
+/* validation / toast styles for collection page */
+.size-select.error .size-btn{box-shadow:0 0 0 3px rgba(218,81,81,0.08);border-color:#da5151}
+.size-select.error .size-btn{animation:shake 300ms ease}
+
+@keyframes shake{0%{transform:translateX(0)}25%{transform:translateX(-6px)}50%{transform:translateX(6px)}75%{transform:translateX(-4px)}100%{transform:translateX(0)}}
+
+.toast-wrap{position:fixed;right:18px;top:18px;z-index:1500;display:flex;flex-direction:column;gap:10px}
+.toast{background:#111;color:#fff;padding:10px 14px;border-radius:8px;box-shadow:0 10px 30px rgba(2,8,10,0.2);opacity:0;transform:translateY(-6px);transition:all 220ms ease}
+.toast.show{opacity:1;transform:translateY(0)}
+
+/* Ensure footer overlays transient UI (toasts, modals) so floating controls aren't visible over the footer */
+.footer{position:relative;z-index:1700}
 }
 
 /* --- Footer: zvětšená vážka za nadpisem --- */
@@ -624,10 +1110,20 @@ section {
 .design-item.pattern-msfene .design-overlay{background:linear-gradient(to top, rgba(255,255,255,0.95), rgba(255,255,255,0.6));color:#073642}
 
 .design-item.pattern-tropicana{background:linear-gradient(135deg,#fff7ef 0%,#fff0f4 100%)}
-.design-item.pattern-tropicana .design-overlay{background:linear-gradient(to top, rgba(0,0,0,0.18), transparent);}
+.design-item.pattern-tropicana .design-overlay{background:linear-gradient(to top, rgba(255,255,255,0.95), transparent); color: #06323a}
 
 .design-item.pattern-vodni{background:linear-gradient(180deg,#f5fcff 0%,#eef9ff 100%)}
 .design-item.pattern-vodni .design-overlay{background:linear-gradient(to top, rgba(255,255,255,0.95), transparent);color:#06323a}
+
+/* Ensure specific overlay headings use the same dark text color as the third tile */
+.design-item.pattern-vodni .design-overlay h3,
+.design-item.pattern-tropicana .design-overlay h3,
+.design-item.pattern-medene .design-overlay h3{
+  color: #06323a !important;
+}
+
+/* Match medene overlay to the vodni style as requested */
+.design-item.pattern-medene .design-overlay{background:linear-gradient(to top, rgba(255,255,255,0.95), transparent); color: #06323a}
 
 /* Overlay tweaks are unified above (centered pill overlay). Pattern-specific overrides remain as defined.
   Decorative small dragonflies on designs section background */
@@ -781,15 +1277,16 @@ section {
 }
 
 .contact {
-  /* whole section uses the site's light-blue background */
-  background: var(--bg2);
+  /* remove the full-width light-blue background band (user requested only that thin strip removed)
+     keep padding and layout so the contact content stays in place; use transparent background */
+  background: transparent;
   padding: 70px 0 90px;
   position: relative; /* allow pseudo-element/separator */
   overflow: visible;
-  color: #08343a; /* darker text for contrast on light-blue bg where needed */
+  color: #08343a; /* darker text for contrast where content needs it */
 }
 
-.contact .container{position:relative}
+.contact .container{position:relative; z-index:1}
 
 /* Subtle transition band between previous section and contact section */
 .contact::before{
@@ -814,6 +1311,31 @@ section {
 
 @media (max-width: 480px) {
   .contact::before{ left: 8%; right: 8%; top: -12px; height: 1px; background: linear-gradient(90deg, rgba(255,255,255,0), rgba(29,73,86,0.06), rgba(255,255,255,0)); }
+}
+
+/* Decorative motifs for the contact section - subtle tiled/positioned svgs */
+.contact::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 0;
+  /* multiple layered motifs (6/7) for a denser decorative background similar to .collection */
+  background-image: url('img/6.svg'), url('img/7.svg'), url('img/6.svg'), url('img/7.svg'), url('img/6.svg'), url('img/7.svg'), url('img/6.svg'), url('img/7.svg');
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+  background-position: left 6% top 8%, right 6% bottom 6%, 20% 18%, 80% 22%, 35% 62%, 65% 66%, 50% 12%, 10% 72%;
+  background-size: 220px, 260px, 180px, 200px, 120px, 140px, 90px, 110px;
+  opacity: 0.12;
+  mix-blend-mode: multiply;
+  filter: contrast(100%) saturate(92%);
+  transform: rotate(-1.6deg);
+}
+
+@media (max-width:1000px){
+  .contact::after{ display:none; }
 }
 
 .contact-content {
@@ -945,8 +1467,53 @@ textarea.form-input{min-height:140px}
 .social-link svg{ flex:0 0 auto; width:18px; height:18px; color: currentColor }
 
 .social-link:hover {
-  filter:brightness(0.95);
+  background-color: var(--pink);
+  color: #fff;
   transform: translateY(-2px);
+}
+
+/* Light pink outline for contact tiles (subtle) */
+.contact .info-item,
+.contact .contact-form{
+  /* use dark accent (approx rgb(29,73,86)) for subtle framed look */
+  border-color: rgba(29,73,86,0.12) !important; /* softened accent */
+  box-shadow: 0 8px 26px rgba(3,19,25,0.03), 0 6px 18px rgba(29,73,86,0.03);
+  transition: box-shadow 180ms ease, border-color 160ms ease, transform 160ms ease;
+}
+.contact .info-item:hover,
+.contact .contact-form:hover{
+  border-color: rgba(29,73,86,0.22) !important;
+  box-shadow: 0 18px 44px rgba(29,73,86,0.06), 0 12px 36px rgba(3,19,25,0.06);
+  transform: translateY(-2px);
+}
+
+/* Contact page: make the form primary button and contact links match the social buttons color
+   and turn pink on hover as requested */
+.contact .btn-primary{
+  background-color: var(--accent) !important;
+  color: var(--bg1) !important;
+  border: none;
+  box-shadow: 0 10px 28px rgba(6,54,54,0.08);
+}
+.contact .btn-primary:hover{
+  background-color: var(--pink) !important;
+  color: #fff !important;
+  transform: translateY(-2px);
+}
+
+.contact .info-text a{
+  /* Keep email/phone as plain inline text, colored like social buttons */
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 700;
+  transition: color 160ms ease, transform 120ms ease;
+  background: none;
+  padding: 0;
+}
+.contact .info-text a:hover,
+.contact .info-text a:focus{
+  color: var(--pink);
+  transform: translateY(-1px);
 }
 
 /* Footer */
@@ -1050,9 +1617,54 @@ textarea.form-input{min-height:140px}
   box-shadow:0 8px 20px rgba(6,54,54,0.08);
   width:max-content;
 }
-.social-button svg{color:var(--accent);flex:0 0 auto}
-.social-button span{color:var(--accent)}
-.social-button:hover{transform:translateY(-3px);filter:brightness(0.95)}
+.social-button svg{color:currentColor;flex:0 0 auto}
+.social-button span{color:currentColor}
+.social-button:hover{
+  /* Stay static; only change color on hover */
+  transform:none;
+  filter:none;
+  background-color: var(--bg1); /* keep white background */
+  color: var(--pink);
+}
+
+/* Hero CTAs should reuse the social-button visual language but be larger and more prominent */
+.hero-actions .social-button.hero-cta{
+  padding:14px 36px;
+  font-size:18px;
+  border-radius:999px;
+  /* match footer social-button: white background, dark accent text */
+  background: var(--bg1);
+  color: var(--accent);
+  box-shadow: 0 8px 20px rgba(6,54,54,0.08);
+  gap:12px;
+  border: none;
+}
+.hero-actions .social-button.hero-cta:hover{
+  transform:translateY(-2px);
+  /* keep background white, change text to pink to match footer hover behavior */
+  background: var(--bg1);
+  color: var(--pink);
+}
+
+/* Accent CTA used across pages: base color like the cart button, hover to pink */
+.btn-accent{
+  display:inline-block;
+  padding:12px 28px;
+  border-radius:999px;
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  font-weight:700;
+  box-shadow: 0 12px 36px rgba(6,54,54,0.12);
+  border: none;
+  transition: transform 160ms ease, background 160ms ease, box-shadow 160ms ease;
+}
+.btn-accent:hover{
+  transform: translateY(-3px);
+  background: var(--pink);
+  color: #fff;
+  box-shadow: 0 18px 48px rgba(244,168,196,0.12);
+}
 
 .footer-col .footer-heading{
   font-size: 16px;
@@ -1064,13 +1676,13 @@ textarea.form-input{min-height:140px}
 .footer-nav{list-style:none;padding:0;margin:0}
 .footer-nav li{margin-bottom:8px}
 .footer-nav a.footer-link{color:#cfeff0}
-.footer-nav a.footer-link:hover{color:#ffffff}
+.footer-nav a.footer-link:hover{color:var(--pink)}
 
 .footer-social{margin-top:12px;display:flex;gap:10px}
 
 .footer-address{color:#d7eaea;line-height:1.5}
 .footer-contact a.footer-link{display:inline-block;color:#cfeff0}
-.footer-contact a.footer-link:hover{color:#ffffff}
+.footer-contact a.footer-link:hover{color:var(--pink)}
 .footer-meta{color:#93a9a9;margin-top:8px}
 
 
@@ -1093,7 +1705,7 @@ textarea.form-input{min-height:140px}
 .footer-legal{color:#7f8b8b}
 
 .footer-link{color:#cfeff0;text-decoration:none;transition:color 0.2s ease}
-.footer-link:hover{color:#ffffff}
+.footer-link:hover{color:var(--pink)}
 
 .footer-copyright{color:#9aa8a8;font-size:14px}
 
@@ -1153,4 +1765,151 @@ textarea.form-input{min-height:140px}
   .contact-form {
     padding: 25px;
   }
+}
+
+.product { gap: 32px; }
+/* Product page layout: desktop -> gallery on the right, meta on the left. */
+.product {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+  /* default for wide screens: put gallery to the left (gallery first) */
+  flex-direction: row;
+}
+/* sizing: gallery column fixed-ish, meta flexible */
+.product .gallery-card { flex: 0 0 480px; max-width: 480px; width: 480px; overflow: hidden; }
+.product .product-meta { flex: 1 1 0; min-width: 260px; }
+.product .card { padding: 20px; }
+.gallery-card { display:flex; flex-direction:column }
+.product .main-img { height:520px; display:flex; align-items:center; justify-content:center; background:#f6f6f8; width:100%; }
+.product .main-img img { width:100%; height:100%; object-fit:cover; border-radius:12px; display:block }
+.thumbs { margin-top:12px; gap:12px; display:flex }
+.thumbs img { width:84px; height:84px; flex:0 0 84px; border-radius:10px; box-shadow:0 6px 18px rgba(2,8,10,0.06); cursor:pointer; border:3px solid transparent; object-fit:cover; display:block }
+.thumbs img.active{ border-color:var(--accent) }
+.product-meta h1 { font-size:22px; margin-bottom:6px }
+.product-meta .price { font-size:22px; color:var(--pink-contrast); font-weight:800 }
+.product-meta .badge { display:inline-block; background:var(--pink); color:var(--pink-contrast); padding:6px 10px; border-radius:999px; font-weight:700; margin-right:8px }
+.meta-row { display:flex; gap:12px; align-items:center }
+.rating { color:#ffb400; margin-left:6px }
+.quantity { display:flex; gap:8px; align-items:center; margin-top:8px }
+.quantity input[type="number"]{width:70px;padding:8px;border-radius:8px;border:1px solid #ddd}
+.tabs { margin-top:18px; border-top:1px solid #eee; padding-top:14px }
+.tabs .tab {
+  background: transparent;
+  border: none;
+  padding: 8px 18px; /* a bit wider so both buttons match visually */
+  border-radius: 12px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 120px; /* ensures equal widths */
+  font-weight: 700; /* keep weight constant to avoid width jumps */
+  line-height: 1;
+  transition: background 180ms ease, color 180ms ease, transform 120ms ease;
+  box-sizing: border-box;
+}
+.tabs .tab.active {
+  background: var(--accent-light);
+  color: var(--accent);
+  /* keep font-weight unchanged to prevent reflow */
+}
+
+@media (max-width: 720px) {
+  .tabs .tab { min-width: 0; padding: 8px 12px; }
+}
+.tab-content { margin-top:12px }
+.specs { margin-top:8px; color:var(--muted) }
+
+/* Ensure small helper lines like shipping / returns and the 'Velikosti' label keep fixed sizing
+   and don't scale/wrap unexpectedly which can cause layout shifts */
+body.product-page .product-meta .muted{
+  font-size:16px; /* fixed pixel size to avoid scaling */
+  line-height:1.4;
+  color:var(--muted);
+  white-space:nowrap; /* keep the two items on a single line */
+  flex:0 0 auto; /* avoid flex-based shrinking/growing */
+}
+
+/* If the content is too long on very small screens, allow graceful truncation */
+@media(max-width:420px){
+  body.product-page .product-meta .muted{white-space:normal;overflow:hidden;text-overflow:ellipsis}
+}
+
+/* Ensure product page content sits clearly below the fixed header/nav */
+body.product-page main > .container {
+  /* reserve header height + small extra spacing */
+  padding-top: calc(var(--site-header-height, 88px) + 22px);
+  /* make sure the product block doesn't hug the top */
+  padding-bottom: 28px;
+}
+
+/* Slight vertical alignment rule for large screens */
+@media (min-width: 1000px) {
+  body.product-page .product { align-items: flex-start; }
+}
+
+/* Breadcrumb styling — designově sladěné s výběrem velikostí a počtem */
+nav[aria-label="Breadcrumb"]{
+  display:inline-flex;
+  gap:10px;
+  align-items:center;
+  background: var(--bg1);
+  padding:8px 12px;
+  border-radius:12px;
+  border:1px solid rgba(2,16,18,0.04);
+  box-shadow: 0 8px 20px rgba(2,8,10,0.04);
+  color: var(--muted);
+}
+nav[aria-label="Breadcrumb"] a{
+  color: var(--pink-contrast);
+  font-weight:700;
+  text-decoration:none;
+  padding:4px 6px;
+  border-radius:8px;
+}
+nav[aria-label="Breadcrumb"] a:hover{
+  background: var(--pink-light);
+}
+nav[aria-label="Breadcrumb"] span{
+  color: var(--accent);
+  font-weight:600;
+  padding:4px 8px;
+  border-radius:8px;
+  background: transparent; /* keep subtle */
+}
+/* make separator (›) a bit muted and spaced */
+nav[aria-label="Breadcrumb"] { font-size:16px }
+nav[aria-label="Breadcrumb"]::before{content:''}
+
+@media(max-width:720px){
+  nav[aria-label="Breadcrumb"]{ padding:6px 10px; gap:8px; font-size:15px }
+}
+.product .card { padding: 20px; }
+.gallery-card { display:flex; flex-direction:column }
+.product .main-img { height: 520px; display:flex; align-items:center; justify-content:center; background:#f6f6f8 }
+.product .main-img img { max-height:100%; width:auto; border-radius:10px }
+.thumbs { margin-top:12px; gap:12px; display:flex }
+.thumbs img { width:72px; height:72px; border-radius:8px; box-shadow:0 6px 18px rgba(2,8,10,0.06); cursor:pointer; border:2px solid transparent }
+.thumbs img.active{ border-color:var(--accent) }
+.product-meta h1 { font-size:22px; margin-bottom:6px }
+.product-meta .price { font-size:22px; color:var(--pink-contrast); font-weight:800 }
+.product-meta .badge { display:inline-block; background:var(--pink); color:var(--pink-contrast); padding:6px 10px; border-radius:999px; font-weight:700; margin-right:8px }
+.meta-row { display:flex; gap:12px; align-items:center }
+.rating { color:#ffb400; margin-left:6px }
+.quantity { display:flex; gap:8px; align-items:center; margin-top:8px }
+.quantity input[type="number"]{width:70px;padding:8px;border-radius:8px;border:1px solid #ddd}
+.tabs { margin-top:18px; border-top:1px solid #eee; padding-top:14px }
+.tabs .tab { background:transparent;border:none;padding:8px 12px;border-radius:8px;cursor:pointer }
+.tabs .tab.active { background:var(--accent-light); color:var(--accent); font-weight:700 }
+.tab-content { margin-top:12px }
+.specs { margin-top:8px; color:var(--muted) }
+
+@media (max-width:900px){
+  /* keep a fixed visible main image height on smaller screens but allow width to fill container */
+  .product .gallery-card { flex-basis: 100%; width: 100%; max-width: 100%; }
+  .product .main-img{height:460px}
+  .thumbs img{width:64px;height:64px;flex:0 0 64px}
+  /* On smaller screens show images first (top) and details below */
+  .product { flex-direction: column; }
 }
