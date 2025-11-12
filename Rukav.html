@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dámské jednodílné plavky s rukávem — NiPeAlies</title>
+  <meta name="description" content="Dámské jednodílné plavky s dlouhým rukávem — popis, specifikace, velikosti a fotografie.">
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Thumbs: show all thumbnails in a horizontal strip and give them rounded corners */
+    .thumbs{display:flex;gap:10px;align-items:center;overflow:auto;padding:6px 0}
+    .thumbs img{width:72px;height:72px;object-fit:cover;border-radius:10px;border:1px solid rgba(0,0,0,0.06);cursor:pointer}
+    .thumbs img.dim{opacity:0.45}
+    .thumbs img.active{outline:2px solid var(--accent, #0a8);outline-offset:2px}
+    /* Redesigned 'E-shop připravujeme' banner */
+    .shop-coming{
+      display:flex;
+      align-items:flex-start; /* align CTA to the first text line */
+      gap:16px;
+      padding:14px 16px;
+      border-radius:14px;
+      background:linear-gradient(180deg, rgba(8,120,115,0.03), rgba(255,255,255,0));
+      border:1px solid rgba(8,120,115,0.07);
+      box-shadow:0 8px 30px rgba(6,90,87,0.04);
+      overflow:hidden;
+    }
+    .shop-coming .sc-left{display:flex;align-items:flex-start;gap:12px;flex:1 1 auto;min-width:0}
+    .shop-coming .sc-icon{flex:0 0 auto;width:48px;height:48px;border-radius:10px;background:linear-gradient(180deg,#eaf7f6,#f7fffe);display:flex;align-items:center;justify-content:center;box-shadow:inset 0 -6px 14px rgba(0,0,0,0.02)}
+    .shop-coming .sc-icon svg{width:26px;height:26px;fill:#0b5b57}
+    .shop-coming .sc-text{min-width:0}
+    .shop-coming .sc-text strong{display:block;font-size:1.05rem;color:#0b5b57;margin-bottom:6px}
+    .shop-coming .sc-text .muted{color:#2f6b69;font-size:0.98rem;line-height:1.25}
+    .shop-coming .sc-cta{flex:0 0 auto;align-self:flex-start;margin-left:8px}
+    .sc-cta .btn-primary.link-like{display:inline-block;padding:10px 16px;border-radius:12px;font-weight:700;color:#fff;background:linear-gradient(180deg,#ff92b0,#ff6f95);box-shadow:0 10px 30px rgba(255,111,149,0.14);text-decoration:none;transition:transform .14s ease,box-shadow .14s ease}
+    .sc-cta .btn-primary.link-like:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(255,111,149,0.18)}
+    @media (max-width:768px){.shop-coming{flex-direction:column;align-items:stretch;padding:12px}.shop-coming .sc-left{order:1}.shop-coming .sc-cta{order:2;margin-left:0;margin-top:10px;text-align:left}.sc-cta .btn-primary.link-like{width:100%;display:block}}
+    /* Size table styles */
+    .size-table{width:100%;border-collapse:collapse;margin-top:12px}
+    .size-table th,.size-table td{border:1px solid rgba(0,0,0,0.06);padding:10px;text-align:center}
+    .size-table th{background:var(--bg2);text-align:left}
+    .size-note{margin-top:8px;color:var(--muted);font-size:14px}
+  </style>
+</head>
+<body class="product-page">
+  <!-- header (shared with kolekce.html) -->
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo">
+          <img src="design/vazkac.svg" alt="NiPeAlies logo">
+          <img src="design/fontc.svg" alt="NiPeAlies font">
+        </div>
+        <nav class="nav">
+          <a href="index.html" class="nav-link">Domů</a>
+          <a href="kolekce.html" class="nav-link">Kolekce</a>
+          <a href="Onas.html" class="nav-link">O nás</a>
+          <a href="kontakt.html" class="nav-link">Kontakt</a>
+        </nav>
+        <a href="kosik.html" class="cart-button" aria-label="Košík">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M6 6h15l-1.4 7.2a2 2 0 0 1-2 1.6H9.4a2 2 0 0 1-2-1.6L6 6z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="10" cy="20" r="1" fill="currentColor"/>
+            <circle cx="18" cy="20" r="1" fill="currentColor"/>
+          </svg>
+          <span class="cart-badge" aria-hidden="true">0</span>
+          <span class="cart-label">Košík</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+  <div class="container">
+    <nav aria-label="Breadcrumb" style="margin:12px 0;color:var(--muted)">
+      <a href="kolekce.html">Kolekce</a> › <span>Jednodílné plavky s rukávem</span>
+    </nav>
+
+    <div class="product">
+      <div class="card gallery-card">
+        <div class="gallery">
+          <figure class="main-img" id="mainImage" aria-hidden="false">
+            <img src="img/plavkyrukav.webp" alt="Plavky s rukávem — hlavní foto">
+          </figure>
+
+          <div class="thumbs" id="thumbs" role="list">
+            <!-- Tropicana -->
+            <img src="img/tropic1.jpg" alt="Tropicana 1" data-full="img/tropic1.jpg" data-color="tropicana" class="active" role="listitem">
+            <img src="img/tropic2.jpg" alt="Tropicana 2" data-full="img/tropic2.jpg" data-color="tropicana" role="listitem">
+            <img src="img/tropic3.jpg" alt="Tropicana 3" data-full="img/tropic3.jpg" data-color="tropicana" role="listitem">
+            <img src="img/plavky-rukav.webp" alt="Tropicana main" data-full="img/plavkyrukav.webp" data-color="tropicana" role="listitem">
+            <!-- Měděné fleky -->
+            <img src="img/fleky.jpg" alt="Měděné fleky 1" data-full="img/fleky.jpg" data-color="medene" role="listitem">
+            <img src="img/fleky1.jpg" alt="Měděné fleky 2" data-full="img/fleky1.jpg" data-color="medene" role="listitem">
+            <img src="img/fleky5.jpg" alt="Měděné fleky 3" data-full="img/fleky5.jpg" data-color="medene" role="listitem">
+            <img src="img/Onas.webp" alt="Měděné fleky 4" data-full="img/Onas.webp" data-color="medene" role="listitem">
+            <!-- Vodní balet -->
+            <img src="img/onas2.jpg" alt="Vodní balet 1" data-full="img/onas2.jpg" data-color="vodni" role="listitem">
+            <img src="img/onas3.jpg" alt="Vodní balet 2" data-full="img/onas3.jpg" data-color="vodni" role="listitem">
+          </div>
+        </div>
+      </div>
+
+
+      <aside class="card product-meta">
+        <div>
+          <h1 id="productName">Dámské jednodílné plavky s rukávem</h1>
+          <span class="badge">Novinka</span>
+          <div class="muted">Kód produktu: <span id="productCode">JPT-R001</span></div>
+        </div>
+
+          <div class="meta-row">
+          <div class="price" id="price">2 400 Kč</div>
+        </div>
+        <div class="muted" style="margin-top:6px">Doprava od 59 Kč.</div>
+
+        <div style="margin-top:12px">
+          <div class="muted">Barvy</div>
+          <div class="colors" id="colors" style="margin:6px 0 10px">
+            <button class="color-btn" data-color="tropicana">Tropicana</button>
+            <button class="color-btn" data-color="medene">Měděné fleky</button>
+            <button class="color-btn" data-color="vodni">Vodní balet</button>
+          </div>
+          <div class="muted">Velikosti</div>
+          <div class="sizes" id="sizes">
+            <button class="size" data-size="S">S (poslední kousek)</button>
+            <button class="size sold" data-size="M" disabled>M (vyprodáno)</button>
+            <button class="size" data-size="L">L</button>
+            <button class="size sold" data-size="XL" disabled>XL (vyprodáno)</button>
+          </div>
+        </div>
+
+        <div class="quantity">
+          <label for="qty" class="muted">Množství</label>
+          <input id="qty" type="number" min="1" value="1">
+        </div>
+
+        <div style="margin-top:12px;">
+          <div class="shop-coming" role="note" aria-live="polite">
+            <div class="sc-left">
+              <div class="sc-icon" aria-hidden="true">
+                <!-- simple bag icon -->
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 7V6a5 5 0 0 1 10 0v1h2v13a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V7h2zm2 0h6V6a3 3 0 0 0-6 0v1z"/></svg>
+              </div>
+              <div class="sc-text">
+                <strong>E-shop připravujeme</strong>
+                <div class="muted">Prozatím přijímáme objednávky přes e-mail.</div>
+              </div>
+            </div>
+            <div class="sc-cta">
+              <a class="btn-primary link-like" href="mailto:objednavky@nipealies.cz">Objednat emailem</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="tabs" role="tablist">
+          <button class="tab active" data-tab="desc">Popis</button>
+          <button class="tab" data-tab="specs">Specifikace</button>
+          <button class="tab" data-tab="size">Velikostní tabulka</button>
+        </div>
+
+        <div class="tab-content" id="desc">
+          <h3>Popis produktu</h3>
+          <p id="descriptionText">Elegantně vypadající plavky s dlouhým rukávem, které jsou k dispozici ve třech designech. Nabízíme varianty s barevným tělem a černými rukávy nebo barevnými těly s černými kalhotkami. Střih je jednoduchý, pas decentně zvýrazněný švem. Rukáv je pohodlný pro sport; rukávy jsou bez podšívky, tělo je celopodšívkové.</p>
+          <ul class="muted specs">
+            <li>Materiál:
+              <ul>
+                <li>Plavkovina: 80% PES, 20% Lycra</li>
+                <li>Černý materiál: 78% Nylon, 22% Elastan</li>
+                <li>Podšívka: 100% PAD</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+        <div class="tab-content" id="specs" style="display:none">
+          <h3>Specifikace</h3>
+          <ul class="muted specs">
+            <li>Gramáž plavkovina: 210 g/m²</li>
+            <li>Gramáž černý materiál: 200 g/m²</li>
+            <li>Gramáž podšívky: 90 g/m²</li>
+            <li>Ochrana proti slunci: UPF 50+</li>
+            <li>Vyrobeno: v České republice</li>
+          </ul>
+        </div>
+
+        <div class="tab-content" id="size" style="display:none">
+          <h3>Velikostní tabulka (cm)</h3>
+          <table class="size-table">
+            <thead>
+              <tr>
+                <th>Měřená oblast</th>
+                <th>S</th>
+                <th>M</th>
+                <th>L</th>
+                <th>XL</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1. Obvod hrudníku</td>
+                <td>38–40</td>
+                <td>40–42</td>
+                <td>42–44</td>
+                <td>44–46</td>
+              </tr>
+              <tr>
+                <td>2. Obvod pasu</td>
+                <td>36–38</td>
+                <td>38–40</td>
+                <td>40–42</td>
+                <td>42–44</td>
+              </tr>
+              <tr>
+                <td>3. Obvod boků</td>
+                <td>41–43</td>
+                <td>43–45</td>
+                <td>45–47</td>
+                <td>47–49</td>
+              </tr>
+              <tr>
+                <td>4. Celková délka plavek</td>
+                <td>64</td>
+                <td>65</td>
+                <td>65</td>
+                <td>66</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="size-note">Měření je orientační. Pokud si nejste jistá, napište nám rozměry a my poradíme s výběrem správné velikosti nebo navrhneme šití na míru.</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      const thumbs = document.getElementById('thumbs');
+      const main = document.querySelector('#mainImage img');
+      const thumbImgs = Array.from(thumbs.querySelectorAll('img'));
+      let images = thumbImgs.map(i => i.dataset.full || i.src);
+      let currentIndex = images.indexOf(main.src) >= 0 ? images.indexOf(main.src) : 0;
+
+      const colorsWrap = document.getElementById('colors');
+      const colorBtns = colorsWrap ? Array.from(colorsWrap.querySelectorAll('.color-btn')) : [];
+      let currentColor = 'tropicana';
+      const productCodeEl = document.getElementById('productCode');
+      const productCodes = { tropicana: 'JPT-R001', medene: 'JPMF-R003', vodni: 'JPVB-R002' };
+
+      function setColor(color, preferredSrc){
+        currentColor = color;
+        colorBtns.forEach(b=>b.classList.toggle('active', b.dataset.color === color));
+        if(productCodeEl) productCodeEl.textContent = productCodes[color] || '';
+        let visibleThumbs = thumbImgs.filter(i => (i.dataset.color || '') === color);
+        thumbImgs.forEach(i => { i.classList.toggle('dim', i.dataset.color !== color); i.style.display = ''; });
+        if(visibleThumbs.length > 0) images = visibleThumbs.map(i => i.dataset.full || i.src);
+        else images = thumbImgs.map(i => i.dataset.full || i.src);
+        let chosenThumb = null;
+        if(preferredSrc) chosenThumb = thumbImgs.find(i => (i.dataset.full || i.src) === preferredSrc);
+        if(!chosenThumb) chosenThumb = visibleThumbs[0] || thumbImgs[0];
+        const chosenSrc = chosenThumb ? (chosenThumb.dataset.full || chosenThumb.src) : (images[0] || '');
+        thumbImgs.forEach(i=>i.classList.remove('active'));
+        if(chosenThumb) chosenThumb.classList.add('active');
+        if(chosenSrc) main.src = chosenSrc;
+        currentIndex = images.indexOf(chosenSrc);
+      }
+
+      colorBtns.forEach(b => b.addEventListener('click', ()=> setColor(b.dataset.color)));
+      setColor(currentColor, true);
+
+      thumbs.addEventListener('click', e => {
+        const t = e.target.closest('img'); if(!t) return; const full = t.dataset.full || t.src; if(!full) return; const thumbColor = t.dataset.color;
+        if(thumbColor){ setColor(thumbColor, full); const btn = colorBtns.find(b => b.dataset.color === thumbColor); if(btn){ colorBtns.forEach(b => b.classList.remove('active')); btn.classList.add('active'); } }
+        else { main.src = full; thumbImgs.forEach(i => i.classList.remove('active')); t.classList.add('active'); currentIndex = images.indexOf(full); }
+      });
+
+      // lightbox, tabs and other interactions reused from Bezrukav
+      const lightbox = document.createElement('div'); lightbox.className='lightbox'; lightbox.id='lightbox'; lightbox.innerHTML = `<button class="lightbox-close" aria-label="Zavřít">×</button><button class="lightbox-prev" aria-label="Předchozí">‹</button><button class="lightbox-next" aria-label="Další">›</button><img class="lightbox-img" src="" alt="">`;
+      document.body.appendChild(lightbox);
+      const lbImg = lightbox.querySelector('.lightbox-img'); const lbClose = lightbox.querySelector('.lightbox-close'); const lbPrev = lightbox.querySelector('.lightbox-prev'); const lbNext = lightbox.querySelector('.lightbox-next');
+      function openLightbox(index){ currentIndex = (index + images.length) % images.length; lbImg.style.opacity=0; lbImg.src = images[currentIndex]; lbImg.onload = ()=>{ lbImg.style.transition='opacity 280ms ease'; lbImg.style.opacity=1; }; const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth; if(scrollBarWidth>0) document.body.style.paddingRight = scrollBarWidth+'px'; lightbox.classList.add('open'); document.body.style.overflow='hidden'; }
+      function closeLightbox(){ lightbox.classList.remove('open'); document.body.style.overflow=''; document.body.style.paddingRight=''; }
+      main.style.cursor='zoom-in'; main.addEventListener('click', ()=> openLightbox(currentIndex));
+      lightbox.addEventListener('click', (e)=>{ if(e.target===lightbox||e.target===lbClose) closeLightbox(); });
+      document.addEventListener('keydown', (e)=>{ if(!lightbox.classList.contains('open')) return; if(e.key==='Escape') closeLightbox(); if(e.key==='ArrowRight') openLightbox(currentIndex+1); if(e.key==='ArrowLeft') openLightbox(currentIndex-1); });
+      if(lbPrev) lbPrev.addEventListener('click',(ev)=>{ev.stopPropagation(); openLightbox(currentIndex-1)});
+      if(lbNext) lbNext.addEventListener('click',(ev)=>{ev.stopPropagation(); openLightbox(currentIndex+1)});
+
+      // sizes selection
+      const sizesWrap = document.getElementById('sizes'); let selectedSize = null; sizesWrap.addEventListener('click', e => { const btn = e.target.closest('.size'); if(!btn || btn.disabled) return; sizesWrap.querySelectorAll('.size').forEach(s=>s.classList.remove('selected')); btn.classList.add('selected'); selectedSize = btn.dataset.size; });
+
+      // Tabs
+      document.querySelectorAll('.tabs .tab').forEach(tab => { tab.addEventListener('click', () => { document.querySelectorAll('.tabs .tab').forEach(t=>t.classList.remove('active')); tab.classList.add('active'); document.querySelectorAll('.tab-content').forEach(c=>c.style.display='none'); const id = tab.dataset.tab; const el = document.getElementById(id); if(el) el.style.display = ''; }); });
+
+      // Fix tab height to avoid layout shift when switching content of different length
+      function fixTabHeights(){
+        const tabs = document.querySelectorAll('.tabs .tab');
+        const activeTab = document.querySelector('.tabs .tab.active');
+        const activeId = activeTab ? activeTab.dataset.tab : null;
+        const tabContents = Array.from(document.querySelectorAll('.tab-content'));
+        // temporarily show all to measure
+        const prev = tabContents.map(c => c.style.display);
+        tabContents.forEach(c => c.style.display = '');
+        // measure max height
+        let max = 0;
+        tabContents.forEach(c => { max = Math.max(max, c.offsetHeight); });
+        // apply min-height and restore visibility: keep only active visible
+        tabContents.forEach(c => {
+          c.style.minHeight = max + 'px';
+          if(activeId && c.id !== activeId) c.style.display = 'none';
+        });
+      }
+
+      // debounce helper
+      function debounce(fn, wait){
+        let t;
+        return function(...args){ clearTimeout(t); t = setTimeout(()=>fn.apply(this,args), wait); };
+      }
+
+      // run once on init and on resize
+      fixTabHeights();
+      window.addEventListener('resize', debounce(fixTabHeights, 120));
+    })();
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Dámské jednodílné plavky s rukávem",
+    "image": ["img/plavkyrukav.webp","img/tropic1.jpg","img/tropic2.jpg","img/tropic3.jpg","img/fleky.jpg","img/fleky1.jpg","img/fleky5.jpg","img/Onas.webp","img/onas2.jpg","img/onas3.jpg"],
+    "description": "Elegantní jednodílné plavky s dlouhým rukávem. Celopodšívkové tělo, rukávy bez podšívky, UPF 50+. K dispozici ve vzorech Tropicana, Měděné fleky a Vodní balet.",
+    "sku": "JPT-R001 / JPVB-R002 / JPMF-R003",
+    "color": ["Tropicana","Měděné fleky","Vodní balet"],
+    "offers": { "@type": "Offer","url": "","priceCurrency": "CZK","price": "2400","availability": "https://schema.org/InStock" }
+  }
+  </script>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col footer-col--brand"><div class="footer-logo"><img src="img/vazka.webp" alt="NiPeAlies Dragonfly" class="footer-dragonfly"><img src="img/fontp.svg" alt="NiPeAlies" class="footer-wordmark"></div></div>
+        <div class="footer-col footer-col--links"><h4 class="footer-heading">Rychlé odkazy</h4><nav aria-label="Footer navigation"><ul class="footer-nav"><li><a href="index.html" class="footer-link">Domů</a></li><li><a href="kolekce.html" class="footer-link">Kolekce</a></li><li><a href="Onas.html" class="footer-link">O nás</a></li><li><a href="kontakt.html" class="footer-link">Kontakt</a></li></ul></nav></div>
+        <div class="footer-col footer-col--social"><h4 class="footer-heading">Sledujte nás</h4><div class="social-buttons"><a href="https://www.instagram.com/nipealies_wetsuit/" target="_blank" class="social-button" aria-label="Instagram">Instagram</a><a href="https://www.facebook.com/Nipealies" target="_blank" class="social-button" aria-label="Facebook">Facebook</a></div></div>
+        <div class="footer-col footer-col--contact"><h4 class="footer-heading">Adresa</h4><p>NiPeAlies s.r.o.<br>Všehrdova 194<br>500 02 Hradec Králové</p></div>
+        <div class="footer-col footer-col--meta"><h4 class="footer-heading">Kontaktní údaje</h4><p><strong>Telefon:</strong> <a href="tel:+420720312030" class="footer-link">+420 720 312 030</a></p><p><strong>Email:</strong> <a href="mailto:info@nipealies.cz" class="footer-link">info@nipealies.cz</a></p><p class="footer-meta">IČO: 22555072</p></div>
+      </div>
+      <div class="footer-bottom"><p class="footer-copyright">© 2025 NiPeAlies. Všechna práva vyhrazena.</p><p class="footer-legal">Podmínky používání • Ochrana soukromí</p></div>
+    </div>
+  </footer>
+
+  </main>
+  </body>
+  </html>

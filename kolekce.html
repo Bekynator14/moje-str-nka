@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!DOCTYPE html>
+  <html lang="cs">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Kolekce — NiPeAlies</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="header-content">
+          <div class="logo">
+            <img src="design/vazkac.svg" alt="NiPeAlies logo">
+            <img src="design/fontc.svg" alt="NiPeAlies font">
+          </div>
+          <nav class="nav">
+            <a href="index.html" class="nav-link">Domů</a>
+            <a href="kolekce.html" class="nav-link">Kolekce</a>
+            <a href="Onas.html" class="nav-link">O nás</a>
+            <a href="kontakt.html" class="nav-link">Kontakt</a>
+          </nav>
+          <a href="kosik.html" class="cart-button" aria-label="Košík">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M6 6h15l-1.4 7.2a2 2 0 0 1-2 1.6H9.4a2 2 0 0 1-2-1.6L6 6z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="10" cy="20" r="1" fill="currentColor"/>
+              <circle cx="18" cy="20" r="1" fill="currentColor"/>
+            </svg>
+            <span class="cart-badge" aria-hidden="true">0</span>
+            <span class="cart-label">Košík</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="collection page-start">
+        <div class="container">
+          <div class="collection-header">
+            <div class="collection-header-left">
+              <h1 class="page-title">Naše kolekce</h1>
+              <p class="page-lead">Připravili jsme si pro Vás dámské jednodílné plavky bez rukávy, ale také plavky s rukávem. Které chrání ženy před sluncem. Jsou vhodné pro sport na vodě, u vody i pod vodou. Pro děti nabízíme Scuba dětský mokrý neopren. Který ochrání pohodlí Vašeho dítko před studenou vodou a chrání jeho tělo přes sluncem. Takže ho nemusíte mazat...</p>
+            </div>
+            <div class="collection-sort">
+              <label for="sort" class="sort-label">Seřadit</label>
+              <div class="custom-select">
+                <select id="sort" class="sort-select">
+                  <option value="popular">Doporučené</option>
+                  <option value="price-asc">Cena ↑</option>
+                  <option value="price-desc">Cena ↓</option>
+                </select>
+                <svg class="select-icon" width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M1 1l6 6 6-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </div>
+            </div>
+          </div>
+
+    <div class="collection-grid" id="collectionGrid">
+            <!-- Sample product cards (these can be generated on server or by JS) -->
+            <a href="Bezrukav.html" class="product-card collection-card" data-sku="NP001" data-desc="Neopren Classic - univerzální oblek">
+              <div class="card-image">
+                <img src="img/plavky-beurukavu.webp" alt="Plavky: jemný vzor" onerror="this.onerror=null;this.src='img/placeholder-product.svg'">
+                <div class="card-overlay"><span class="card-tag">Bestseller</span></div>
+              </div>
+              <div class="card-content">
+                <h3 class="card-title product-title">Dámské jednodílné plavky bez rukávu</h3>
+                <p class="card-description">Elegantní jednodílné plavky s moderními vzory. Perfektní pro plavání i opalování. Vyrobeno z kvalitních materiálů pro maximální pohodlí.</p>
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-top:12px;gap:12px">
+                  <div class="price">2 200 Kč</div>
+                  <div class="sizes-inline" style="font-size:14px;color:var(--muted);display:flex;gap:8px;align-items:center">
+                    <span>S</span>
+                    <span>M</span>
+                    <span>L</span>
+                    <span>XL</span>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <a href="Rukav.html" class="product-card collection-card" data-sku="NP002" data-desc="Dámský střih Harmony - komfortní dámský střih">
+              <div class="card-image">
+                <img src="img/plavky-rukav.webp" alt="Plavky s rukávem" onerror="this.onerror=null;this.src='img/placeholder-product.svg'">
+                <div class="card-overlay"><span class="card-tag">Rukáv</span></div>
+              </div>
+              <div class="card-content">
+                <h3 class="card-title product-title">Dámské jednodílné plavky s rukávem</h3>
+                <p class="card-description">Stylové plavky s rukávy pro extra ochranu před sluncem. Ideální pro aktivní ženy, které chtějí kombinovat styl s funkcionalitou.</p>
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-top:12px;gap:12px">
+                  <div class="price">2 200 Kč</div>
+                  <div class="sizes-inline" style="font-size:14px;color:var(--muted);display:flex;gap:8px;align-items:center">
+                    <span>XS</span>
+                    <span>S</span>
+                    <span>M</span>
+                    <span>L</span>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <!-- more sample cards (repeat qualitatively) -->
+            <a href="Scuba.html" class="product-card collection-card" data-sku="NP003" data-desc="Pánský střih Voyager - odolný pánský neopren">
+              <div class="card-image">
+                <img src="img/děti.webp" alt="Dětské plavky" onerror="this.onerror=null;this.src='img/placeholder-product.svg'">
+                <div class="card-overlay"><span class="card-tag">Pro děti</span></div>
+              </div>
+              <div class="card-content">
+                <h3 class="card-title product-title">Scuba – dětský mokrý neopren</h3>
+                <p class="card-description">Kvalitní neopreny pro děti s veselými vzory. Zajišťují tepelnou ochranu a pohodlí při vodních aktivitách. Snadno se obléknou a rychle schnou.</p>
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-top:12px;gap:12px">
+                  <div class="price">4 990 Kč</div>
+                  <div class="sizes-inline" style="font-size:14px;color:var(--muted);display:flex;gap:8px;align-items:center">
+                    <span>M</span>
+                    <span>L</span>
+                    <span>XL</span>
+                    <span>XXL</span>
+                  </div>
+                </div>
+              </div>
+            </a>
+    </div>
+        </div>
+      </section>
+
+      <!-- Designs Section (moved below collection) -->
+      <section class="designs">
+        <div class="container">
+          <h2 class="section-title">Vzory a barvy</h2>
+          <p class="section-subtitle">Každý kousek je jedinečný díky našim originálním vzorům</p>
+
+          <div class="designs-grid">
+            <div class="design-item pattern-medene" aria-label="Měděné fleky">
+              <img src="img/fleky3.jpg" alt="Měděné fleky" loading="lazy" onerror="this.onerror=null;this.src='img/placeholder-product.svg'">
+              <div class="design-overlay"><h3>Měděné fleky</h3></div>
+            </div>
+
+            <div class="design-item pattern-tropicana" aria-label="Tropicana">
+              <img src="img/tropic1.jpg" alt="Tropicana" loading="lazy" onerror="this.onerror=null;this.src='img/placeholder-product.svg'">
+              <div class="design-overlay"><h3>Tropicana</h3></div>
+            </div>
+
+            <div class="design-item pattern-vodni" aria-label="Vodní balet">
+              <img src="img/balet1.jpeg" alt="Vodní balet" loading="lazy" onerror="this.onerror=null;this.src='img/placeholder-product.svg'">
+              <div class="design-overlay"><h3>Vodní balet</h3></div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </main>
+
+      <!-- Footer -->
+      <footer class="footer">
+          <div class="container">
+              <div class="footer-grid">
+                  <div class="footer-col footer-col--brand">
+          <div class="footer-logo">
+            <img src="img/vazka.webp" alt="NiPeAlies Dragonfly" class="footer-dragonfly">
+            <!-- wordmark image for a nicer footer heading -->
+            <img src="img/fontp.svg" alt="NiPeAlies" class="footer-wordmark">
+          </div>
+                          <!-- popis odstraněn na žádost - ponecháváme pouze logo a název -->
+                  </div>
+
+                  <div class="footer-col footer-col--links">
+                      <h4 class="footer-heading">Rychlé odkazy</h4>
+                      <nav aria-label="Footer navigation">
+                          <ul class="footer-nav">
+                              <li><a href="#home" class="footer-link">Domů</a></li>
+                              <li><a href="#kolekce" class="footer-link">Kolekce</a></li>
+                              <li><a href="#o-nas" class="footer-link">O nás</a></li>
+                              <li><a href="#kontakt" class="footer-link">Kontakt</a></li>
+                          </ul>
+                      </nav>
+                  </div>
+
+                  <div class="footer-col footer-col--social">
+                      <h4 class="footer-heading">Sledujte nás</h4>
+                      <div class="social-buttons">
+                  <a href="https://www.instagram.com/nipealies_wetsuit/" target="_blank" class="social-button" aria-label="Instagram">
+                      <!-- Instagram SVG -->
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M17.5 6.5h.01" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                              </svg>
+                              <span>Instagram</span>
+                          </a>
+
+                                                                          <a href="https://www.facebook.com/Nipealies" target="_blank" class="social-button" aria-label="Facebook">
+                                                                                  <!-- Facebook filled glyph (consistent with contact icon) -->
+                                                                                  <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                                                                      <path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2.7v-2.9h2.7V9.3c0-2.7 1.6-4.2 4-4.2 1.2 0 2.5.2 2.5.2v2.7h-1.4c-1.4 0-1.8.9-1.8 1.8v2h3l-.5 2.9h-2.5v7A10 10 0 0 0 22 12z" fill="currentColor"/>
+                                                                                  </svg>
+                                                                                  <span>Facebook</span>
+                                                                          </a>
+                      </div>
+                  </div>
+                  <div class="footer-col footer-col--contact">
+                      <h4 class="footer-heading">Adresa</h4>
+                      <p>
+                      NiPeAlies s.r.o.<br>
+                      Všehrdova 194<br>
+                      500 02 Hradec Králové</p>
+                  </div>
+
+                  <div class="footer-col footer-col--meta">
+                      <h4 class="footer-heading">Kontaktní údaje</h4>
+                      <p><strong>Telefon:</strong> <a href="tel:+420720312030" class="footer-link">+420 720 312 030</a></p>
+
+                      <p><strong>Email:</strong> <a href="mailto:info@nipealies.cz" class="footer-link">info@nipealies.cz</a></p>
+
+                      <p class="footer-meta">IČO: 22555072</p>
+                  </div>
+              </div>
+
+              <div class="footer-bottom">
+                  <p class="footer-copyright">© 2025 NiPeAlies. Všechna práva vyhrazena.</p>
+                  <p class="footer-legal">Podmínky používání • Ochrana soukromí</p>
+              </div>
+          </div>
+      </footer>
+
+
+    <!-- toast container for small notifications -->
+    <div class="toast-wrap" id="toastWrap" aria-live="polite" aria-atomic="true"></div>
+
+    <script>
+      // Init cart badge
+      (function(){
+        var badge = document.querySelector('.cart-badge');
+        if(!badge) return;
+        badge.textContent = localStorage.getItem('cartCount') || '0';
+      })();
+
+      // Simple sorting (client side for demo)
+      var sortEl = document.getElementById('sort');
+      if(sortEl){
+        sortEl.addEventListener('change', function(){
+          var val = this.value;
+          var grid = document.getElementById('collectionGrid');
+          var items = Array.from(grid.querySelectorAll('.product-card'));
+          if(val === 'price-asc') items.sort(function(a,b){
+            return parseInt(a.querySelector('.price').textContent.replace(/\D/g,'')) - parseInt(b.querySelector('.price').textContent.replace(/\D/g,''));
+          });
+          else if(val === 'price-desc') items.sort(function(a,b){
+            return parseInt(b.querySelector('.price').textContent.replace(/\D/g,'')) - parseInt(a.querySelector('.price').textContent.replace(/\D/g,''));
+          });
+          items.forEach(function(i){ grid.appendChild(i); });
+        });
+      }
+    </script>
+  </body>
+  </html>
+          <a href="produkt-3.html" class="product-card collection-card" data-sku="NP003" data-desc="Pánský střih Voyager - odolný pánský neopren">

@@ -1,0 +1,106 @@
+/* Mobilní záplata pro NiPeAlies
+   Tento soubor doplňuje existující `styles.css` bez přepsání původního souboru.
+   Doporučení pro použití v HTML:
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+     <link rel="stylesheet" href="styles.css">
+     <link rel="stylesheet" href="styles.mobile.css" media="(max-width: 900px)">
+
+   Poznámka: soubor obsahuje pouze nenáročné, bezpečné úpravy pro zlepšení mobilní použitelnosti.
+*/
+
+/* -----------------------------
+   Základní responzivní pravidla
+   ----------------------------- */
+
+/* Responsivní obrázky/videa */
+img, picture, video, svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Zvětšené dotykové cíle a lepší tap handling */
+a, button, .btn, .nav-link, .cart-button {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  touch-action: manipulation;
+}
+
+/* Základní mobilní kontejner a čtenelnost */
+@media (max-width: 900px) {
+  :root{
+    /* možné úpravy měřítek pro malé obrazovky */
+    --site-header-height: 64px;
+  }
+
+  .container { padding: 0 16px; }
+
+  /* Kompaktnější header */
+  .header-content { padding: 12px 0; }
+  .logo img, .logo-dragonfly { height: 36px; }
+  .logo-text { font-size: 20px; }
+
+  /* Navigace: umožnit zalamování a menší mezery */
+  .nav { gap: 12px; flex-wrap: wrap; align-items: center; }
+  .nav-link { font-size: 16px; padding: 8px; }
+
+  /* Cart: skrýt delší štítky (pokud ještě nejsou skryty) a dát větší tap oblast */
+  .cart-button { padding: 8px 10px; min-height: 44px; }
+  .cart-button .cart-label { display: none; }
+
+  /* Tlačítka a CTA: větší výška pro dotyk */
+  .btn, .btn-primary, .btn-secondary { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
+
+  /* Hero: zjednodušit, aby text byl čitelný a obrázky se nezobrazovaly přeslink */
+  .hero { padding-left: 6%; padding-right: 6%; padding-top: calc(var(--site-header-height) + 8px); padding-bottom: 40px; background-position: center top; }
+  .hero-content { flex-direction: column; gap: 20px; align-items: center; justify-content: center; min-height: calc(100vh - var(--site-header-height)); }
+  .hero .hero-title { font-size: clamp(24px, 8.5vw, 40px); line-height: 1.08; text-align: center; }
+  .hero .hero-subtitle, .hero .hero-lead { text-align: center; font-size: 16px; }
+  .hero-image, .photo-card { display: none !important; }
+
+  /* Footer stacked layout */
+  .footer-content { flex-direction: column; align-items: flex-start; gap: 12px; padding: 20px 0; }
+
+  /* Utility: omezit stíny kvůli výkonu na starších telefonech */
+  .cart-button, .btn-primary, .hero::before, .hero::after { box-shadow: none !important; }
+
+  /* Zabránit přílišnému přepínání animací */
+  * { -webkit-font-smoothing: antialiased; }
+}
+
+/* Střední breakpoint: jemné škálování mezi mobile a desktop */
+@media (min-width: 601px) and (max-width: 1200px) {
+  .container { padding: 0 20px; }
+  .logo-text { font-size: 22px; }
+  .nav-link { font-size: 17px; }
+  .hero .hero-title { font-size: clamp(32px, 7.5vw, 72px); }
+}
+
+/* Reduced motion pro uživatele, kteří to preferují */
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+
+/* Přístupnost: skip link (pokud není přítomen v HTML, lze přidat) */
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.skip-link:focus {
+  left: 16px;
+  top: 16px;
+  width: auto;
+  height: auto;
+  background: #000;
+  color: #fff;
+  padding: 8px 12px;
+  z-index: 9999;
+}
+
+/* Drobná třída pro lepší štítné (safe areas) */
+.safe-top { padding-top: env(safe-area-inset-top); }
+
+/* Konec mobilní záplaty */
