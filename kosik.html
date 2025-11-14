@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Košík — NiPeAlies</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo">
+          <img src="design/vazkac.svg" alt="NiPeAlies logo">
+          <img src="design/fontc.svg" alt="NiPeAlies font">
+        </div>
+        <!-- Mobile menu toggle -->
+        <button class="menu-toggle" aria-controls="primaryNav" aria-expanded="false" aria-label="Otevřít menu" type="button">
+          <span class="menu-icon" aria-hidden="true">☰</span>
+        </button>
+        <nav id="primaryNav" class="nav">
+          <a href="index.html#home" class="nav-link">Domů</a>
+          <a href="kolekce.html" class="nav-link">Kolekce</a>
+          <a href="Onas.html" class="nav-link">O nás</a>
+          <a href="kontakt.html" class="nav-link">Kontakt</a>
+        </nav>
+        <a href="kosik.html" class="cart-button" aria-label="Košík">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M6 6h15l-1.4 7.2a2 2 0 0 1-2 1.6H9.4a2 2 0 0 1-2-1.6L6 6z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="10" cy="20" r="1" fill="currentColor"/>
+            <circle cx="18" cy="20" r="1" fill="currentColor"/>
+          </svg>
+          <span class="cart-badge" aria-hidden="true">0</span>
+          <span class="cart-label">Košík</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-start" style="padding-top:110px">
+      <div class="container">
+        <h1 class="page-title">Váš košík</h1>
+        <p class="page-lead">Zkontrolujte položky v košíku, změňte množství nebo pokračujte k platbě.</p>
+
+        <div id="cartApp" style="margin-top:20px">
+          <div id="emptyState" style="display:none;background:#fff;padding:28px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.04);">
+            <p style="margin:0 0 12px">V košíku zatím nemáte žádné položky.</p>
+            <a href="kolekce.html" class="btn btn-primary">Prohlédnout kolekci</a>
+          </div>
+
+          <div id="cartView" style="display:none">
+            <div style="display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap">
+              <div style="flex:1;min-width:320px">
+                <div id="items" style="display:flex;flex-direction:column;gap:12px"></div>
+                <div style="height:18px"></div>
+                <div style="display:flex;gap:8px;align-items:center">
+                  <button id="clearCart" class="btn" style="background:transparent;border:1px solid rgba(6,54,54,0.06);padding:10px 12px;border-radius:10px">Vyprázdnit košík</button>
+                  <button id="addDemo" class="btn" style="background:transparent;border:1px dashed rgba(6,54,54,0.06);padding:10px 12px;border-radius:10px">Přidat testovací položku</button>
+                </div>
+              </div>
+
+              <aside style="width:320px;min-width:260px">
+                <div style="background:#fff;padding:20px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.04)">
+                  <h3 style="margin:0 0 8px">Shrnutí</h3>
+                  <div style="display:flex;justify-content:space-between;margin:8px 0"><span>Mezisoučet</span><strong id="subtotal">0 Kč</strong></div>
+                  <div style="display:flex;justify-content:space-between;margin:8px 0"><span>Doprava</span><span id="shipping">Zadarmo</span></div>
+                  <hr style="border:none;border-top:1px solid rgba(0,0,0,0.06);margin:12px 0">
+                  <div style="display:flex;justify-content:space-between;margin:8px 0;font-size:18px"><strong>Celkem</strong><strong id="total">0 Kč</strong></div>
+                  <div style="height:12px"></div>
+                  <button id="checkout" class="btn btn-primary" style="width:100%;padding:12px 14px">Přejít k platbě</button>
+                </div>
+              </aside>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer copied from index.html -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col footer-col--brand">
+          <div class="footer-logo">
+            <img src="img/vazka.webp" alt="NiPeAlies Dragonfly" class="footer-dragonfly">
+            <!-- wordmark image for a nicer footer heading -->
+            <img src="img/fontp.svg" alt="NiPeAlies" class="footer-wordmark">
+          </div>
+        </div>
+
+        <div class="footer-col footer-col--links">
+          <h4 class="footer-heading">Rychlé odkazy</h4>
+          <nav aria-label="Footer navigation">
+            <ul class="footer-nav">
+              <li><a href="index.html#home" class="footer-link">Domů</a></li>
+              <li><a href="kolekce.html" class="footer-link">Kolekce</a></li>
+              <li><a href="Onas.html" class="footer-link">O nás</a></li>
+              <li><a href="kontakt.html" class="footer-link">Kontakt</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <div class="footer-col footer-col--social">
+          <h4 class="footer-heading">Sledujte nás</h4>
+          <div class="social-buttons">
+            <a href="https://www.instagram.com/nipealies_wetsuit/" target="_blank" class="social-button" aria-label="Instagram">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M17.5 6.5h.01" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span>Instagram</span>
+            </a>
+
+            <a href="https://www.facebook.com/Nipealies" target="_blank" class="social-button" aria-label="Facebook">
+              <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2.7v-2.9h2.7V9.3c0-2.7 1.6-4.2 4-4.2 1.2 0 2.5.2 2.5.2v2.7h-1.4c-1.4 0-1.8.9-1.8 1.8v2h3l-.5 2.9h-2.5v7A10 10 0 0 0 22 12z" fill="currentColor"/>
+              </svg>
+              <span>Facebook</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col footer-col--contact">
+          <h4 class="footer-heading">Adresa</h4>
+          <p>NiPeAlies s.r.o.<br>Všehrdova 194<br>500 02 Hradec Králové</p>
+        </div>
+
+        <div class="footer-col footer-col--meta">
+          <h4 class="footer-heading">Kontaktní údaje</h4>
+          <p><strong>Telefon:</strong> <a href="tel:+420720312030" class="footer-link">+420 720 312 030</a></p>
+          <p><strong>Email:</strong> <a href="mailto:info@nipealies.cz" class="footer-link">info@nipealies.cz</a></p>
+          <p class="footer-meta">IČO: 22555072</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copyright">© 2025 NiPeAlies. Všechna práva vyhrazena.</p>
+        <p class="footer-legal">Podmínky používání • Ochrana soukromí</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast-wrap" id="toastWrap" aria-live="polite" aria-atomic="true"></div>
+
+  <script>
+    // Cart page script - unified cart model: prefer localStorage key 'cart' (used by produkt-1.html)
+    // For backward compatibility we also support 'cartItems'. When saving we update both keys.
+    function formatCZK(n){ return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + ' Kč'; }
+
+    function getCart(){
+      try{
+        var raw = localStorage.getItem('cart');
+        if(!raw) raw = localStorage.getItem('cartItems'); // fallback for older pages
+        return raw ? JSON.parse(raw) : [];
+      }catch(e){ return []; }
+    }
+    function saveCart(items){
+      var json = JSON.stringify(items || []);
+      // write to both keys so older pages and this page stay in sync
+      localStorage.setItem('cart', json);
+      localStorage.setItem('cartItems', json);
+      updateBadge();
+    }
+
+    function updateBadge(){
+      var badge = document.querySelector('.cart-badge'); if(!badge) return;
+      var items = getCart(); var totalQty = items.reduce(function(s,i){ return s + (Number(i.qty)||0); },0);
+      badge.textContent = String(totalQty);
+      try{ localStorage.setItem('cartCount', String(totalQty)); }catch(e){}
+    }
+
+    function renderCart(){
+      var items = getCart();
+      var empty = document.getElementById('emptyState');
+      var view = document.getElementById('cartView');
+      var itemsWrap = document.getElementById('items');
+      if(!items || items.length===0){ empty.style.display='block'; view.style.display='none'; itemsWrap.innerHTML=''; return; }
+      empty.style.display='none'; view.style.display='block'; itemsWrap.innerHTML='';
+      var subtotal = 0;
+      items.forEach(function(it){
+        subtotal += (Number(it.price)||0) * (Number(it.qty)||0);
+        var el = document.createElement('div'); el.className='cart-item'; el.style.display='flex'; el.style.gap='12px'; el.style.alignItems='center'; el.style.background='#fff'; el.style.padding='12px'; el.style.borderRadius='10px'; el.style.boxShadow='0 8px 20px rgba(0,0,0,0.04)';
+        el.innerHTML = '\n          <div style="width:84px;height:84px;flex:0 0 84px;border-radius:8px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:#f6f8f9"><img src="'+(it.img||'img/plavky-beurukavu.webp')+'" alt="'+(it.title||'Produkt')+'" style="width:100%;height:100%;object-fit:cover"></div>\n          <div style="flex:1">\n            <div style="font-weight:700">'+(it.title||'Produkt')+'</div>\n            <div style="color:var(--muted);font-size:13px;margin-top:6px">SKU: '+(it.sku||'—')+'</div>\n          </div>\n          <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px">\n            <div style="font-weight:700">'+formatCZK(Number(it.price)||0)+'</div>\n            <div style="display:flex;align-items:center;gap:8px">\n              <button class="qtyBtn" data-sku="'+it.sku+'" data-action="dec" style="padding:6px 8px;border-radius:8px;border:1px solid rgba(0,0,0,0.06)">−</button>\n              <div style="min-width:36px;text-align:center">'+(it.qty||0)+'</div>\n              <button class="qtyBtn" data-sku="'+it.sku+'" data-action="inc" style="padding:6px 8px;border-radius:8px;border:1px solid rgba(0,0,0,0.06)">+</button>\n            </div>\n            <button class="removeBtn" data-sku="'+it.sku+'" style="background:transparent;border:none;color:var(--pink);font-weight:700">Odstranit</button>\n          </div>\n        ';
+        itemsWrap.appendChild(el);
+      });
+      document.getElementById('subtotal').textContent = formatCZK(subtotal);
+      document.getElementById('total').textContent = formatCZK(subtotal); // shipping free for now
+
+      // bind qty / remove
+      document.querySelectorAll('.qtyBtn').forEach(function(b){ b.addEventListener('click', function(){ var sku = this.getAttribute('data-sku'); var act = this.getAttribute('data-action'); changeQty(sku, act==='inc' ? 1 : -1); }); });
+      document.querySelectorAll('.removeBtn').forEach(function(b){ b.addEventListener('click', function(){ var sku = this.getAttribute('data-sku'); removeItem(sku); }); });
+    }
+
+    function changeQty(sku, delta){ var items = getCart(); var idx = items.findIndex(function(i){ return i.sku===sku; }); if(idx===-1) return; items[idx].qty = Math.max(0, (items[idx].qty||0) + delta); if(items[idx].qty===0){ items.splice(idx,1); } saveCart(items); renderCart(); showToast('Aktualizováno.'); }
+    function removeItem(sku){ var items = getCart().filter(function(i){ return i.sku !== sku; }); saveCart(items); renderCart(); showToast('Položka odstraněna.'); }
+
+    function clearCart(){ if(!confirm('Opravdu vyprázdnit košík?')) return; saveCart([]); renderCart(); showToast('Košík byl vyprázdněn.'); }
+
+    function addDemoItem(){ var items = getCart(); var demo = { sku: 'PLV_DEMO_'+Date.now(), title: 'Testovací plavky', price: 1899, qty:1, img:'img/plavky-beurukavu.webp' }; items.push(demo); saveCart(items); renderCart(); showToast('Přidána testovací položka.'); }
+
+    document.getElementById('clearCart').addEventListener('click', clearCart);
+    document.getElementById('addDemo').addEventListener('click', addDemoItem);
+    document.getElementById('checkout').addEventListener('click', function(){ showToast('Směrem k platbě — demo.'); });
+
+    // small toast helper
+    function showToast(text){ var wrap = document.getElementById('toastWrap'); if(!wrap) return; var t = document.createElement('div'); t.className='toast'; t.textContent=text; wrap.appendChild(t); setTimeout(function(){ t.classList.add('show'); },10); setTimeout(function(){ t.classList.remove('show'); setTimeout(function(){ t.remove(); },240); },2200); }
+
+    // Initialize
+    (function(){ updateBadge(); renderCart(); })();
+  </script>
+</script>
+<script src="js/menu.js" defer></script>
+</body>
+</html>

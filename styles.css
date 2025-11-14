@@ -1,0 +1,2298 @@
+:root{
+  --accent:#1D4956;    /* primary dark teal */
+  --accent-light:#E4F6FB; /* light cyan */
+  --bg2:#E5F7FC;       /* very light cyan for subtle backgrounds */
+  --bg1:#FFFFFF;       /* white */
+  --muted:#2b5f6b;     /* muted/darker cyan for secondary text */
+  --site-header-height:88px;
+  /* Pink palette from provided SVG */
+  --pink: #f4a8c4;
+  --pink-light: #fdebf2;
+  --pink-contrast: #7a153a;
+}
+html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;background:var(--bg1);color:var(--accent)}
+.container{max-width:1100px;margin:0 auto;padding:0 20px}
+.header{position:sticky;top:0;backdrop-filter:blur(6px);background:rgba(255,255,255,0.55);border-bottom:1px solid rgba(15,23,42,0.04);z-index:1100}
+.header-content{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+.logo{display:flex;align-items:center;gap:12px}
+.logo img{height:46px;display:block}
+.logo-text{font-family:'Dancing Script',cursive;font-size:28px;color:var(--accent);letter-spacing:0.6px}
+.nav{display:flex;gap:18px}
+.nav-link{color:var(--accent);text-decoration:none;font-weight:600}
+
+/* Larger navigation text and cart button styling */
+.nav { gap: 26px; align-items: center; }
+.nav-link { font-size: 18px; font-weight: 700; color: var(--accent); padding: 8px 10px; }
+
+.cart-button{
+  position: relative; /* allow absolutely positioned badge */
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:8px 14px;
+  border-radius:999px;
+  background-color: var(--accent); /* single solid color */
+  color: #ffffff; /* icon + label in white for contrast */
+  text-decoration: none;
+  font-weight: 700;
+  box-shadow: 0 8px 20px rgba(6,54,54,0.08);
+  border: none;
+  transition: transform 160ms ease, filter 160ms ease;
+}
+.cart-button svg{flex:0 0 auto; color: currentColor}
+.cart-button .cart-label{display:inline-block}
+.cart-button:hover{transform:translateY(-3px);filter:brightness(0.94);box-shadow:0 10px 26px rgba(6,54,54,0.12)}
+
+/* Badge inside the cart button */
+.cart-badge{
+  position:absolute;
+  top:-7px;
+  right:-7px;
+  min-width:18px;
+  height:18px;
+  padding:0 5px;
+  border-radius:999px;
+  background: var(--accent-light); /* visible accent for badge */
+  color: var(--accent);
+  font-size:12px;
+  font-weight:800;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 6px 14px rgba(0,0,0,0.12);
+  line-height:1;
+}
+
+@media (max-width: 768px){
+  /* keep header compact on mobile: hide cart label and shrink nav text slightly */
+  .nav-link{font-size:16px}
+  .cart-button{padding:8px}
+  .cart-button .cart-label{display:none}
+}
+.hero{padding:0;margin-top:0}
+.hero-content{display:flex;gap:40px;align-items:center}
+.hero-text{flex:1}
+.hero-title{font-size:38px;margin:0 0 12px;font-weight:600;color:#042a2a}
+.hero-subtitle{color:var(--muted);margin:0 0 20px;font-size:16px}
+.btn{display:inline-block;padding:10px 18px;border-radius:999px;text-decoration:none}
+.btn-primary{background-color:var(--accent);color:var(--bg1);font-weight:600;box-shadow:0 10px 28px rgba(13,45,50,0.08)}
+.hero-image{flex:0 0 420px;display:flex;align-items:center;justify-content:center;position:relative}
+.hero-image img{width:100%;max-width:420px;border-radius:14px;box-shadow:0 18px 50px rgba(4,42,43,0.08);object-fit:cover}
+
+/* Photo card is hidden when hero uses full-bleed background image */
+.photo-card{
+  display: none;
+}
+.decorative-circle{position:absolute;border-radius:50%;opacity:0.14}
+.circle-1{display:none}
+.circle-2{display:none}
+.decorative-circle{display:none!important}
+/* simple responsive */
+@media (max-width:900px){.hero-content{flex-direction:column-reverse;align-items:flex-start}.hero-image{width:100%;flex:auto}.logo-text{font-size:22px}.hero-title{font-size:30px}}
+
+/* Ensure hero content doesn't get hidden under the fixed header on small screens */
+@media (max-width:900px){
+  .hero{
+    /* reserve safe area for notch; don't use background image on mobile */
+    padding-top: env(safe-area-inset-top);
+    min-height: calc(100vh - var(--site-header-height,88px));
+    background: none;
+  }
+  /* center hero content vertically between header and bottom */
+  .hero-content{
+    gap:20px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    min-height: calc(100vh - var(--site-header-height,88px));
+  }
+  /* Move the textbox down a lot so the heading sits lower on the screen */
+  .hero-text{padding-top:160px;padding-bottom:0;text-align:center}
+  .hero-title{margin-top:0}
+  /* hide photo card / hero image on mobile (we removed the background) */
+  .photo-card{display:none}
+  .hero-image{display:none}
+}
+
+/* Gallery removed - styles cleaned up */
+
+/* Small utility styles (if not already present in global styles.css) */
+.section-title{font-size:22px;margin:0 0 6px}
+.section-subtitle{margin:0 0 12px;color:var(--muted)}
+.footer{padding:30px 0}
+.footer-content{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+/* (removed product-page bottom padding per request) */
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: var(--accent);
+  background-color: #ffffff;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  z-index: 1100; /* higher than content to ensure header sits on top */
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-dragonfly {
+  height: 40px;
+  width: auto;
+}
+
+.logo-text {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 1px;
+}
+
+.nav {
+  display: flex;
+  gap: 30px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--accent);
+  font-weight: 500;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.nav-link:hover {
+  color: var(--accent);
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--accent);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Hero Section */
+.hero {
+  margin-top: 0;
+  min-height: 100vh;
+  padding: 0;
+  /* background image with a left-side dark overlay for text contrast */
+  background: linear-gradient(90deg, rgba(4,16,20,0.46) 0%, rgba(4,16,20,0.12) 32%, rgba(255,255,255,0) 62%), url('img/pohled.webp');
+  background-size: cover;
+  background-position: center center;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.hero-content {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+
+/* Move hero content more to the left and make text area tighter */
+.hero > .container{
+  max-width:100%; /* allow hero content to span full viewport */
+  /* menší odsazení vlevo, aby byl textbox více vlevo na obrazovce */
+  padding-left:12px;
+  padding-right:24px;
+}
+.hero-text{max-width:1100px}
+.hero-content{justify-content:flex-start;gap:40px}
+.hero-title{font-size:72px;line-height:1.02;text-shadow:0 8px 30px rgba(2,8,10,0.18)}
+.hero-subtitle{font-size:20px;color:rgba(255,255,255,0.92);opacity:0.95}
+
+/* Subtle dragonfly motifs on the right to add brand feel */
+.hero::before{
+  content:"";
+  position:absolute;
+  right:6%;
+  top:20%;
+  width:420px;
+  height:260px;
+  background-image:url('img/vazka.webp');
+  background-repeat:no-repeat;
+  background-position:center;
+  background-size:contain;
+  opacity:0.06;
+  transform:rotate(6deg);
+  pointer-events:none;
+}
+.hero::after{
+  content:"";
+  position:absolute;
+  right:2%;
+  bottom:8%;
+  width:240px;
+  height:140px;
+  background-image:url('img/vazka.webp');
+  background-repeat:no-repeat;
+  background-position:center;
+  background-size:contain;
+  opacity:0.04;
+  transform:rotate(-8deg) scale(0.9);
+  pointer-events:none;
+}
+
+/* Ensure hero content sits above the background image */
+.hero-content, .hero-text, .hero-image { position: relative; z-index: 2 }
+
+.hero-title {
+  font-size: 56px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 20px;
+  line-height: 1.05;
+}
+.hero-subtitle {
+  font-size: 20px;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 30px;
+  line-height: 1.5;
+}
+/* small lead under subtitle */
+.hero-lead{font-size:15px;color:rgba(255,255,255,0.85);margin-bottom:18px;font-weight:600}
+
+/* Ensure the hero lead on the homepage is always white for contrast */
+.hero .hero-lead{color:#ffffff !important}
+
+/* hero actions */
+.hero-actions{display:flex;gap:12px;align-items:center}
+.btn-secondary{background:transparent;border:1px solid var(--accent);color:var(--accent);padding:10px 18px;border-radius:999px}
+.btn-secondary:hover{background:var(--accent-light);color:var(--accent);transform:translateY(-2px)}
+ 
+
+.hero-image {
+  /* zmenšená pevná šířka obrázku vpravo, aby text mohl zabrat víc místa */
+  flex: 0 0 380px;
+  position: relative;
+}
+
+/* Override: hero responsive tweaks moved from index.html */
+/* These rules expand the hero text area and provide responsive scaling for the main title */
+.hero {
+  padding-left: 6%;
+  padding-right: 6%;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.hero .container {
+  max-width: 1200px; /* lze upravit podle potřeby */
+  width: 100%;
+  margin: 0 auto;
+}
+
+.hero .hero-title {
+  font-size: clamp(48px, 7.5vw, 110px);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  margin: 0 0 18px 0;
+  white-space: normal;
+  word-break: keep-all;
+  text-shadow: 0 8px 30px rgba(2,8,10,0.18);
+}
+
+.hero .hero-subtitle, .hero .hero-lead {
+  max-width: 70ch;
+}
+
+@media (max-width: 900px) {
+  .hero {
+    padding-top: 56px;
+    padding-bottom: 56px;
+  }
+  .hero .hero-title {
+    font-size: clamp(36px, 9.5vw, 72px);
+    line-height: 1.02;
+  }
+}
+
+@media (max-width: 420px) {
+  .hero {
+    padding-left: 6%;
+    padding-right: 6%;
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+  .hero .hero-title {
+    font-size: clamp(28px, 9.5vw, 40px);
+    line-height: 1.08;
+  }
+}
+
+/* Adjust spacing for the small lead under the title and match width to the hero actions */
+.hero .hero-lead {
+  display: inline-flex; /* inline-flex lets items sit horizontally but wrap if needed */
+  align-items: center;
+  gap: 0; /* we control spacing via separators */
+  max-width: 420px; /* match approximate width of the CTA buttons container */
+  margin-bottom: 18px;
+  color: #ffffff !important; /* keep white on top of background */
+  flex-wrap: wrap;
+}
+
+.hero .hero-lead .lead-item {
+  /* keep normal spacing inside items (e.g. 'Osobní přístup') */
+  margin: 0;
+  padding: 0;
+  white-space: nowrap; /* avoid breaking inside the item */
+}
+
+.hero .hero-lead .lead-sep {
+  margin: 0 28px; /* larger spacing around the bullet — increased per request */
+  color: rgba(255,255,255,0.9);
+
+/* Feature sections: make text+image rows flexible and alternate their direction */
+.feature-section .feature-row{
+  display:flex;
+  align-items:center;
+  gap:36px;
+}
+.feature-section .feature-image img{
+  width:100%;
+  height:auto;
+  border-radius:12px;
+  object-fit:cover;
+}
+/* Alternate direction for even feature sections so image/text swap sides */
+main .feature-section:nth-of-type(even) .feature-row{
+  flex-direction:row-reverse;
+}
+/* On small screens stack vertically with image below text for consistency */
+@media (max-width:900px){
+  .feature-section .feature-row{flex-direction:column-reverse;gap:18px}
+  .feature-section .feature-image img{width:100%;max-width:720px}
+}
+  display: inline-block;
+}
+
+.hero .hero-actions {
+  max-width: 420px; /* keep buttons and lead visually aligned */
+}
+
+@media (max-width: 900px) {
+  .hero .hero-lead {
+    max-width: 100%;
+    justify-content: center;
+  }
+  .hero .hero-lead .lead-sep {
+    margin: 0 14px; /* reduced separation on smaller screens but larger than before */
+  }
+  .hero .hero-actions {
+    max-width: 100%;
+    justify-content: center;
+  }
+}
+
+.hero::before{
+  content:"";
+  position:absolute;
+  right:6%;
+  top:20%;
+  width:420px;
+  height:260px;
+  background-image:url('img/vazka.webp');
+  background-repeat:no-repeat;
+  background-position:center;
+  background-size:contain;
+  opacity:0.06;
+  transform:rotate(6deg);
+  pointer-events:none;
+  filter: grayscale(1) contrast(0.95) opacity(0.9);
+}
+.hero::after{
+  content:"";
+  position:absolute;
+  right:2%;
+  bottom:8%;
+  width:240px;
+  height:140px;
+  background-image:url('img/vazka.webp');
+  background-repeat:no-repeat;
+  background-position:center;
+  background-size:contain;
+  opacity:0.04;
+  transform:rotate(-8deg) scale(0.9);
+  pointer-events:none;
+  filter: grayscale(1) contrast(0.9) opacity(0.9);
+}
+
+
+.circle-2 {
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, var(--accent-light), transparent);
+  bottom: -30px;
+  left: -30px;
+}
+
+.circle-3 {
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, var(--bg2), transparent);
+  top: 50%;
+  right: -60px;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 14px 32px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.btn-primary {
+  background-color: var(--accent-light); /* light blue */
+  color: var(--accent); /* dark text for contrast */
+  border: 1px solid rgba(29,73,86,0.06);
+  box-shadow: 0 8px 18px rgba(13,45,50,0.06);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  filter: brightness(0.94);
+  box-shadow: 0 12px 30px rgba(13,45,50,0.12);
+}
+
+/* Footer wordmark / logo sizing (moved from index.html) */
+/* Zvýšeno ~3× oproti předchozím hodnotám podle požadavku */
+.footer-logo{display:flex;align-items:center;gap:42px}
+.footer-dragonfly{height:168px;width:auto}
+.footer-wordmark{height:144px;width:auto;display:block}
+
+@media (max-width:640px){
+  .footer-dragonfly{height:132px}
+  .footer-wordmark{height:108px}
+}
+
+
+/* Gallery styles */
+.gallery-section{padding:48px 0}
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:14px;margin-top:18px}
+.gallery-thumb{background:transparent;border:0;padding:0;cursor:pointer;border-radius:10px;overflow:hidden;display:block}
+.gallery-thumb img{width:100%;height:120px;object-fit:cover;display:block;border-radius:10px;border:1px solid rgba(6,54,54,0.04)}
+
+/* Lightbox */
+.lightbox{position:fixed;left:0;top:0;right:0;bottom:0;display:flex;align-items:center;justify-content:center;background:rgba(4,8,10,0.6);opacity:0;pointer-events:none;transition:opacity 180ms ease;z-index:2200}
+.lightbox.open{opacity:1;pointer-events:auto}
+.lightbox-img{max-width:92vw;max-height:82vh;border-radius:12px;box-shadow:0 20px 60px rgba(2,8,10,0.6)}
+.lightbox-close{position:absolute;top:22px;right:22px;background:transparent;border:0;color:#fff;font-size:34px;cursor:pointer}
+.lightbox-caption{position:fixed;left:50%;transform:translateX(-50%);bottom:8vh;color:#fff;margin-top:12px;font-size:16px}
+
+/* Lightbox navigation arrows */
+.lightbox-prev,
+.lightbox-next{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background:rgba(0,0,0,0.45);
+  color:#fff;
+  border:0;
+  width:56px;
+  height:56px;
+  border-radius:999px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  font-size:30px;
+  cursor:pointer;
+  box-shadow:0 10px 30px rgba(0,0,0,0.4);
+}
+.lightbox-prev{left:22px}
+.lightbox-next{right:22px}
+.lightbox-prev:hover,.lightbox-next:hover{background:rgba(0,0,0,0.6);transform:translateY(-50%) scale(1.02)}
+
+/* fade transition for the lightbox image */
+.lightbox-img{transition:opacity 280ms ease;opacity:1}
+
+@media(max-width:720px){
+  .lightbox-prev,.lightbox-next{width:44px;height:44px;font-size:22px}
+}
+
+/* small responsiveness */
+@media (max-width:600px){.gallery-thumb img{height:92px}.lightbox-img{max-width:94vw;max-height:78vh}}
+
+/* Back button on product pages */
+.back-btn{display:inline-block;margin-bottom:12px;padding:8px 12px;border-radius:10px;background:transparent;border:1px solid rgba(29,73,86,0.06);color:var(--accent);text-decoration:none;font-weight:700}
+.back-btn:hover{background:var(--accent-light)}
+
+/* Size tiles */
+.size-tiles{display:flex;gap:8px;align-items:center}
+.size-tile{background:#fff;border:1px solid rgba(29,73,86,0.06);padding:6px 10px;border-radius:8px;cursor:pointer;font-weight:700;color:var(--accent);min-width:36px;text-align:center;box-shadow:inset 0 1px 0 rgba(255,255,255,0.6)}
+.size-tile:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(6,54,54,0.06)}
+.size-tile.active{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:none}
+
+/* Styles for product page size buttons (markup uses .size) */
+.sizes{display:flex;gap:8px;align-items:center}
+.sizes .size{background:#fff;border:1px solid rgba(29,73,86,0.06);padding:6px 10px;border-radius:8px;cursor:pointer;font-weight:700;color:var(--accent);min-width:36px;text-align:center;box-shadow:inset 0 1px 0 rgba(255,255,255,0.6)}
+.sizes .size:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(6,54,54,0.06)}
+.sizes .size.selected{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:none}
+
+/* Color variant buttons */
+.colors{display:flex;gap:8px;align-items:center}
+.color-btn{background:#fff;border:1px solid rgba(29,73,86,0.06);padding:8px 12px;border-radius:8px;cursor:pointer;font-weight:700;color:var(--accent)}
+.color-btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(6,54,54,0.06)}
+.color-btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+
+/* Quantity input visual upgrade */
+.quantity { display:flex; gap:12px; align-items:center; margin-top:8px }
+.quantity label{font-weight:700;color:var(--accent);margin-right:6px}
+.quantity input[type="number"]{width:84px;padding:10px 12px;border-radius:10px;border:1px solid rgba(29,73,86,0.08);box-shadow:inset 0 2px 6px rgba(2,8,10,0.02);font-weight:700;text-align:center}
+.quantity input[type="number"]::-webkit-outer-spin-button, .quantity input[type="number"]::-webkit-inner-spin-button{margin:0}
+
+/* Prominent Add to cart button */
+.add-cart{padding:12px 22px;border-radius:999px;border:none;font-weight:800;cursor:pointer}
+.add-cart.btn-primary{background:var(--pink);color:#fff;box-shadow:0 18px 40px rgba(244,168,196,0.10);font-size:18px}
+.add-cart:hover{transform:translateY(-2px)}
+
+/* If you want the small left button style (historic) keep .btn-secondary, but we removed wishlist */
+
+/* Collection card visual polish (small, safe rules) */
+.collection-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.collection-card{display:block;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 8px 20px rgba(6,54,54,0.03);text-decoration:none;color:inherit}
+.card-image img{width:100%;height:220px;object-fit:cover;display:block}
+.card-content{padding:14px}
+.card-title{font-size:18px;margin:0 0 8px}
+.card-description{color:var(--muted);font-size:14px}
+.card-tag{background:var(--pink-light);color:var(--pink-contrast);padding:6px 8px;border-radius:999px;font-weight:700;font-size:12px}
+
+/* Responsive product layout tweaks */
+@media (max-width:900px){
+  .product-grid{grid-template-columns:1fr !important}
+  .product-aside{order:-1}
+}
+
+/* Small helper for add-to-cart action */
+.add-to-cart{white-space:nowrap}
+
+/* Ensure product/collection images are shown in full color (override any decorative grayscale) */
+.collection-card .card-image img,
+.product-aside img,
+.photo-card img,
+.card-image img,
+.hero-image img,
+.collection-grid img{
+  filter: none !important;
+  -webkit-filter: none !important;
+  opacity: 1 !important;
+}
+
+/* Section Styles */
+section {
+  padding: 80px 0;
+  /* ensure anchored headings sit below the fixed header */
+  scroll-margin-top: calc(var(--site-header-height,88px) + 16px);
+}
+
+/* Collection header + sort control */
+.collection-header{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:20px;
+  flex-wrap:wrap;
+  margin-bottom:22px;
+}
+.collection.page-start{
+  /* Reserve extra space under the fixed header so the title sits lower */
+  padding-top: calc(var(--site-header-height, 88px) + 40px);
+}
+.contact, #kontakt {
+  /* Match collection spacing so contact heading sits lower under the fixed header */
+  padding-top: calc(var(--site-header-height, 88px) + 40px);
+}
+.collection-header-left{max-width:72%;}
+.collection-header .page-title{font-size:36px;margin:0 0 8px;color:var(--accent);letter-spacing:0.2px}
+.collection-header .page-lead{margin:0;color:var(--muted);font-size:16px}
+.collection-sort{margin-left:auto;display:flex;align-items:center;gap:12px}
+.sort-label{font-size:14px;color:var(--muted);font-weight:600}
+.custom-select{position:relative;display:inline-block}
+.sort-select{
+  -webkit-appearance:none;
+  -moz-appearance:none;
+  appearance:none;
+  padding:10px 38px 10px 14px;
+  border-radius:12px;
+  border:1px solid rgba(2,16,18,0.06);
+  background:#fff;
+  font-weight:700;
+  color:var(--accent);
+  box-shadow:0 6px 18px rgba(4,20,22,0.04);
+}
+.custom-select .select-icon{position:absolute;right:10px;top:50%;transform:translateY(-50%);pointer-events:none;color:var(--muted)}
+
+@media(max-width:720px){
+  .collection-header-left{max-width:100%}
+  .collection-header{align-items:flex-start}
+  .collection-header .page-title{font-size:28px}
+  .collection-sort{width:100%;margin-top:12px;justify-content:flex-start}
+}
+
+.section-title {
+  font-size: 42px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 16px;
+  color: var(--accent);
+}
+
+.section-subtitle {
+  font-size: 18px;
+  text-align: center;
+  color: #666;
+  margin-bottom: 60px;
+}
+
+
+/* --- Navigation appearance: dark base, pink hover + animated underline --- */
+/* keep pink variables defined earlier in :root; just change nav link behaviour */
+.nav-link{
+  color: var(--accent); /* dark base */
+  position: relative; /* for underline pseudo-element */
+  transition: color 200ms ease;
+}
+.nav-link::after{
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--pink);
+  transition: width 240ms cubic-bezier(.2,.9,.2,1);
+}
+.nav-link:hover{
+  color: var(--pink);
+}
+.nav-link:hover::after{
+  width: 100%;
+}
+
+/* Cart button: keep previous styling but use pink accent for hover only */
+.cart-button{
+  background-color: var(--accent); /* dark */
+  color: #ffffff;
+  box-shadow: 0 10px 28px rgba(6,54,54,0.12);
+}
+.cart-button:hover{ transform: translateY(-3px); filter: brightness(0.94); }
+
+/* Cart badge: use light pink with dark pink text */
+.cart-badge{
+  background:var(--pink-light) !important;
+  color:var(--pink-contrast) !important;
+  box-shadow: 0 6px 14px rgba(122,21,58,0.08);
+}
+
+/* Also make primary buttons pink if they use .btn-primary (optional, keeps consistent look) */
+.btn-primary{
+  background-color:var(--pink) !important;
+  color:#fff !important;
+  border-color: rgba(255,77,138,0.06) !important;
+  box-shadow: 0 12px 30px rgba(255,77,138,0.08);
+}
+
+/* Onas page specific styles */
+.about-hero{padding:calc(var(--site-header-height,88px) + 120px) 0 36px; scroll-margin-top: calc(var(--site-header-height,88px) + 32px);}
+.about-hero-inner{display:flex;gap:36px;align-items:center}
+.hero-copy{flex:1}
+.hero-heading{font-size:36px;color:var(--accent);margin:0 0 12px}
+.hero-lead{color:var(--muted);margin-bottom:16px}
+.hero-photo{flex:0 0 420px}
+.hero-photo-img{width:100%;height:420px;object-fit:cover;border-radius:14px;box-shadow:0 18px 50px rgba(4,20,22,0.06)}
+
+.story-section{padding:32px 0}
+.story-grid{display:grid;grid-template-columns:1fr 320px;gap:28px;align-items:start}
+.story-text h2{font-size:28px;margin-bottom:12px;color:var(--accent)}
+.story-text p{color:var(--muted);line-height:1.8;margin-bottom:12px}
+.story-aside .values{background:#fff;padding:16px;border-radius:10px;border:1px solid rgba(2,16,18,0.04);margin-bottom:14px}
+.values ul{list-style:disc;margin-left:18px;color:var(--muted)}
+.contact-card{background:linear-gradient(180deg,var(--pink-light),#fff);padding:16px;border-radius:10px}
+
+.gallery-section{padding:28px 0}
+.gallery-grid{display:grid;grid-template-columns:2fr 1fr;gap:12px;align-items:start}
+.gallery-main img{width:100%;height:100%;object-fit:cover;border-radius:14px;box-shadow:0 20px 60px rgba(4,20,22,0.06)}
+.gallery-side img{width:100%;height:150px;object-fit:cover;border-radius:10px;margin-bottom:10px}
+
+.final-cta{padding:28px 0}
+.final-cta-inner{display:flex;justify-content:space-between;align-items:center;gap:18px}
+/* Ensure final CTA has comfortable horizontal padding on small screens
+   (the HTML previously used an inline padding shorthand that removed horizontal padding) */
+.final-cta .container{padding-left:20px;padding-right:20px}
+@media(max-width:720px){
+  .final-cta .container{padding-left:28px;padding-right:28px}
+  .final-cta .about-paragraph{max-width:56ch;margin-left:auto;margin-right:auto}
+}
+
+@media(max-width:1000px){
+  .about-hero-inner{flex-direction:column-reverse}
+  .hero-photo-img{height:320px}
+  .story-grid{grid-template-columns:1fr}
+
+/* O nás (mobile): vždy zobrazit text před fotkou */
+@media (max-width: 900px) {
+  /* Ensure feature rows stack vertically with text first */
+  .feature-section .feature-row,
+  .feature-section .feature-row.reverse {
+    display: flex !important;
+    flex-direction: column !important; /* text above image */
+    align-items: stretch !important;
+    gap: 18px !important;
+  }
+
+  .feature-section .feature-text {
+    order: 1 !important;
+    width: 100% !important;
+  }
+  .feature-section .feature-image {
+    order: 2 !important;
+    width: 100% !important;
+  }
+
+  /* About page specific: text first then image */
+  .about-content {
+    flex-direction: column !important;
+    gap: 18px !important;
+    align-items: stretch !important;
+  }
+  .about-text { order: 1 !important; width: 100% !important; }
+  .about-image { order: 2 !important; width: 100% !important; }
+
+  /* Story sections / other two-column blocks: ensure text before image */
+  .story-grid, .story-grid > * {
+    display: block !important;
+  }
+  .story-text { order: 1 !important; width: 100% !important; }
+  .story-aside { order: 2 !important; width: 100% !important; }
+
+  /* Prevent any leftover floats/absolute causing horizontal layout */
+  .feature-section *, .about-content * { max-width: 100% !important; box-sizing: border-box !important; }
+}
+
+  .gallery-grid{grid-template-columns:1fr 1fr}
+  .gallery-side img{height:120px}
+  .final-cta-inner{flex-direction:column;align-items:flex-start}
+}
+
+@media(max-width:720px){
+  .hero-heading{font-size:26px}
+  .hero-photo-img{height:200px}
+  .gallery-side img{height:100px}
+}
+
+/* Feature sections (text + image) used on O nás */
+.feature-section{padding:48px 0}
+.feature-row{display:grid;grid-template-columns:1fr 460px;gap:36px;align-items:center}
+.feature-row.reverse{grid-template-columns:460px 1fr}
+.feature-text h2{font-size:26px;color:var(--accent);margin-bottom:10px}
+.feature-text p{color:var(--muted);line-height:1.8;margin-bottom:10px}
+.feature-image img{width:100%;height:320px;object-fit:cover;border-radius:12px;box-shadow:0 18px 50px rgba(4,20,22,0.06)}
+
+
+@media(max-width:1000px){
+  .feature-row, .feature-row.reverse{grid-template-columns:1fr;}
+  .feature-image img{height:260px}
+}
+
+@media(max-width:720px){
+  .feature-image img{height:200px}
+  .feature-text h2{font-size:20px}
+}
+
+/* Alternating colored sections and subtle dragonfly pattern */
+.feature-section{position:relative;overflow:visible}
+.feature-section:nth-of-type(odd){background:linear-gradient(180deg,rgba(255,255,255,0.98),transparent)}
+.feature-section:nth-of-type(even){background:var(--bg2)}
+
+/* Single decorative motif for non-patterned sections (keeps previous look) */
+.feature-section:not(.patterned)::before{
+  content:"";
+  position:absolute;
+  right:8%;
+  top:10%;
+  width:380px;
+  height:220px;
+  background-image:url('img/vazka.webp');
+  background-repeat:no-repeat;
+  background-position:center;
+  background-size:contain;
+  opacity:0.06;
+  pointer-events:none;
+  transform:rotate(6deg);
+}
+
+/* Patterned (tiled) variant - use when you want the repeating dragonfly texture like on Kolekce -> Vzory a barvy */
+.feature-section.patterned::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: url('img/vazka.webp');
+  background-repeat: repeat;
+  background-position: center top;
+  background-size: 120px; /* tile size, tweakable */
+  opacity: 0.10; /* a little stronger than single motif but still subtle */
+  mix-blend-mode: multiply;
+  transform: rotate(-3deg);
+}
+
+/* Harmonizovat fotografie: jemné odbarvení/tónování, tenký rámeček a overlay pro jednotný look */
+.feature-image img{
+  filter: saturate(0.95) contrast(1.03) brightness(0.98);
+  border: 1px solid rgba(2,16,18,0.04);
+  transition: transform 240ms ease, box-shadow 240ms ease;
+}
+/* removed empty ::after rule (not needed) */
+.feature-image:hover img{transform:translateY(-6px);box-shadow:0 28px 70px rgba(4,20,22,0.12)}
+
+/* Specific crop for the 'Název' section: prefer the top of the photo in the visible crop */
+#nazev .feature-image img{
+  object-fit: cover;
+  /* move the visible crop slightly down so the image appears a bit lower in the frame */
+  object-position: center 20%;
+}
+
+/* Reduce pattern intensity on small screens to keep readability */
+@media(max-width:1000px){
+  .feature-section:not(.patterned)::before,
+  .feature-section.patterned::before{display:none}
+}
+
+/* Explicit: allow opting out of any motif on a section */
+.feature-section.no-motif::before{display:none !important}
+
+/* Ensure first feature section starts below fixed header */
+.feature-section:first-of-type{padding-top:calc(var(--site-header-height,88px) + 48px)}
+
+@media(max-width:900px){
+  .feature-section:first-of-type{padding-top:calc(var(--site-header-height,88px) + 20px)}
+}
+
+/* Collection Section */
+.collection {
+  background-color: #ffffff;
+  position: relative; /* create stacking context for decorative backgrounds */
+  overflow: hidden;
+}
+
+/* Decorative motifs for the 'Naše kolekce' section */
+.collection::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 0;
+  /* layered decorative svgs: subtle left and right motifs */
+  background-image: url('img/6.svg'), url('img/7.svg');
+  background-repeat: no-repeat, no-repeat;
+  background-position: left 6% top 8%, right 6% bottom 6%;
+  background-size: 220px, 260px;
+  opacity: 0.14;
+  filter: contrast(105%) saturate(92%);
+  transform: translateZ(0);
+}
+
+/* Ensure collection content sits above decorative motifs */
+.collection > .container{ position: relative; z-index: 1; }
+
+/* Extra decorative motifs and subtle motion for the collection section */
+.collection::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 0;
+  /* Use multiple instances of the two motifs to create a denser pattern */
+  background-image: url('img/6.svg'), url('img/7.svg'), url('img/6.svg'), url('img/7.svg'), url('img/6.svg'), url('img/7.svg'), url('img/6.svg'), url('img/7.svg');
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+  background-position: left 6% top 8%, right 6% bottom 6%, 20% 18%, 80% 22%, 35% 62%, 65% 66%, 50% 12%, 10% 72%;
+  background-size: 260px, 320px, 180px, 200px, 120px, 140px, 90px, 110px;
+  opacity: 0.16;
+  mix-blend-mode: multiply;
+  filter: contrast(100%) saturate(92%);
+  transform: rotate(-1.8deg);
+}
+
+.collection::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 0;
+  /* multiple gently floating motifs layered above the main background but below content */
+  background-image: url('img/6.svg'), url('img/7.svg'), url('img/6.svg'), url('img/7.svg'), url('img/6.svg');
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+  background-position: 18% 36%, 82% 18%, 50% 10%, 42% 40%, 68% 56%;
+  background-size: 120px, 160px, 90px, 110px, 100px;
+  opacity: 0.10;
+  transform: translateZ(0);
+  animation: floatMotif 14s ease-in-out infinite;
+}
+
+@keyframes floatMotif {
+  0%{ transform: translateY(0) rotate(-0.5deg); }
+  50%{ transform: translateY(-12px) rotate(0.5deg); }
+  100%{ transform: translateY(0) rotate(-0.5deg); }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .collection::after{ animation: none; }
+}
+
+/* Ensure collection content sits clearly above decorative motifs */
+.collection > .container{ position: relative; z-index: 2; }
+
+.collection-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 40px;
+}
+
+.collection-card {
+  background-color: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.collection-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+.card-image {
+  position: relative;
+  overflow: hidden;
+  height: 400px;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.collection-card:hover .card-image img {
+  transform: scale(1.05);
+}
+
+.card-overlay {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.card-tag {
+  background-color: var(--pink);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 700;
+  box-shadow: 0 8px 22px rgba(244,168,196,0.12);
+}
+
+.card-content {
+  padding: 30px;
+}
+
+.card-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--accent);
+}
+
+.card-description {
+  font-size: 16px;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* --- Sekce O nás: dekorativní vážka za textem --- */
+.about { position: relative; overflow: visible; }
+
+/* vážka je umístěna přímo za textem (méně za celým layoutem) */
+.about-dragonfly {
+  position: absolute;
+  right: 48px; /* umístění kousek napravo od textového sloupce */
+  top: 18px;
+  width: 460px; /* velká, ale ne přes celou sekci */
+  max-width: 55%;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0; /* za textem */
+  opacity: 0.12; /* dostatečně jemná, aby text byl čitelný */
+  transform: translateY(-4px);
+}
+
+.about-text { position: relative; z-index: 2; }
+
+.about-dragonfly img { width: 100%; height: auto; display: block; filter: grayscale(1); }
+
+@media (max-width: 900px) {
+  .about-dragonfly { right: 28px; width: 360px; opacity: 0.10; }
+}
+
+@media (max-width: 600px) {
+  /* na drobnějších obrazovkách dekoraci skryjeme kvůli čitelnosti */
+  .about-dragonfly { display: none; }
+
+/* Collection / product grid styles */
+.collection .page-title{margin-bottom:6px;font-size:28px}
+.collection .page-lead{margin-bottom:28px;max-width:760px;color:var(--muted);font-size:17px}
+.product-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:40px;margin-top:36px}
+.product-card{background:var(--bg1);border-radius:14px;overflow:hidden;border:1px solid rgba(6,54,54,0.03);box-shadow:0 10px 30px rgba(13,45,50,0.03);display:flex;flex-direction:column}
+.product-media{background:linear-gradient(180deg, #fff, #fbfbfb);display:block}
+.product-media img{width:100%;height:220px;object-fit:cover;display:block}
+.product-body{padding:16px 18px;display:flex;flex-direction:column;gap:12px}
+.product-title{font-size:18px;margin:0;color:var(--accent);font-weight:700}
+.product-meta{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.price{font-size:18px;color:var(--accent);font-weight:700}
+.product-actions{display:flex;align-items:center;gap:12px}
+
+.size-select{position:relative}
+.size-btn{background:transparent;border:1px solid rgba(6,54,54,0.06);padding:8px 12px;border-radius:999px;font-weight:600}
+.size-list{position:absolute;right:0;top:calc(100% + 8px);background:#fff;border-radius:10px;padding:8px;box-shadow:0 14px 30px rgba(2,8,10,0.06);display:flex;flex-direction:column;gap:6px;min-width:120px}
+.size-option{background:transparent;border:none;padding:8px;border-radius:8px;text-align:left}
+.size-select[data-open="false"] .size-list{display:none}
+
+.add-to-cart{padding:8px 12px;border-radius:999px}
+
+@media (max-width:1000px){
+  .product-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:640px){
+  .product-grid{grid-template-columns:1fr}
+  .product-media img{height:360px}
+}
+
+/* Modal styles */
+.modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;z-index:1400}
+.modal.open{display:flex}
+.modal-backdrop{position:absolute;inset:0;background:rgba(2,8,10,0.45)}
+.modal-dialog{position:relative;background:var(--bg1);border-radius:12px;max-width:980px;width:94%;box-shadow:0 40px 120px rgba(2,8,10,0.2);overflow:hidden}
+.modal-close{position:absolute;right:12px;top:12px;border:none;background:transparent;font-size:18px;padding:8px;cursor:pointer}
+.modal-grid{display:grid;grid-template-columns:1fr 420px;gap:0}
+.modal-media img{width:100%;height:100%;object-fit:cover;display:block}
+.modal-media{background:#fff;min-height:360px}
+.modal-body{padding:24px}
+
+@media (max-width:900px){
+  .modal-grid{grid-template-columns:1fr}
+  .modal-media{min-height:260px}
+}
+
+/* validation / toast styles for collection page */
+.size-select.error .size-btn{box-shadow:0 0 0 3px rgba(218,81,81,0.08);border-color:#da5151}
+.size-select.error .size-btn{animation:shake 300ms ease}
+
+@keyframes shake{0%{transform:translateX(0)}25%{transform:translateX(-6px)}50%{transform:translateX(6px)}75%{transform:translateX(-4px)}100%{transform:translateX(0)}}
+
+.toast-wrap{position:fixed;right:18px;top:18px;z-index:1500;display:flex;flex-direction:column;gap:10px}
+.toast{background:#111;color:#fff;padding:10px 14px;border-radius:8px;box-shadow:0 10px 30px rgba(2,8,10,0.2);opacity:0;transform:translateY(-6px);transition:all 220ms ease}
+.toast.show{opacity:1;transform:translateY(0)}
+
+/* Ensure footer overlays transient UI (toasts, modals) so floating controls aren't visible over the footer */
+.footer{position:relative;z-index:1700}
+}
+
+/* --- Footer: zvětšená vážka za nadpisem --- */
+.footer-col--brand {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  /* easy vertical tweak: positive = move down, negative = move up */
+  --footer-brand-offset: 8px;
+}
+.footer-col--brand .footer-dragonfly {
+  position: absolute;
+  left: 14px; /* necháme vážku vlevo u loga */
+  bottom: 28px; /* umístíme mírně nad spodní hranou patičky */
+  width: 420px;
+  max-width: 50%;
+  opacity: 0.08;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0; /* za textem v rámci sloupce */
+  transform: translateY(6px) rotate(-6deg);
+  filter: grayscale(1);
+}
+
+.footer-col--brand .footer-brand,
+.footer-col--brand .footer-logo { position: relative; z-index: 1; }
+
+@media (max-width: 900px) {
+  .footer-col--brand .footer-dragonfly { width: 320px; opacity: 0.07; left: 8px; }
+}
+
+@media (max-width: 600px) {
+  /* Na mobilu vážku skryjeme, aby patička zůstala kompaktní */
+  .footer-col--brand .footer-dragonfly { display: none; }
+}
+
+.designs {
+  background: linear-gradient(135deg, var(--accent-light) 0%, var(--bg2) 100%);
+}
+
+.designs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+}
+
+.design-item {
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  height: 340px;
+  cursor: pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: #fff; /* white windows for photos */
+  box-shadow: 0 8px 24px rgba(3,19,25,0.04);
+  border: 1px solid rgba(15,23,42,0.04);
+  color: inherit;
+}
+
+.design-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.design-overlay {
+  position: absolute;
+  left: 50%;
+  bottom: 18px;
+  transform: translateX(-50%);
+  width: calc(100% - 48px);
+  max-width: 92%;
+  padding: 12px 18px;
+  border-radius: 12px;
+  /* lighter overlay using palette */
+  background: var(--accent-light);
+  color: var(--accent);
+  box-shadow: 0 8px 24px rgba(4,42,43,0.06);
+  text-align: center;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+  z-index: 2;
+  pointer-events: auto;
+}
+
+.design-item:hover .design-overlay {
+  transform: translateX(-50%) translateY(-6px);
+  box-shadow: 0 18px 44px rgba(4,42,43,0.12);
+}
+
+.design-item:hover img {
+  transform: scale(1.06);
+}
+
+.design-overlay h3 {
+  color: var(--accent) !important;
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* Specific pattern styles */
+.design-item.pattern-msfene{background:linear-gradient(180deg,#f8fff9 0%,#f0f8f1 100%);color:#073642}
+.design-item.pattern-msfene .design-overlay{background:linear-gradient(to top, rgba(255,255,255,0.95), rgba(255,255,255,0.6));color:#073642}
+
+.design-item.pattern-tropicana{background:linear-gradient(135deg,#fff7ef 0%,#fff0f4 100%)}
+.design-item.pattern-tropicana .design-overlay{background:linear-gradient(to top, rgba(255,255,255,0.95), transparent); color: #06323a}
+
+.design-item.pattern-vodni{background:linear-gradient(180deg,#f5fcff 0%,#eef9ff 100%)}
+.design-item.pattern-vodni .design-overlay{background:linear-gradient(to top, rgba(255,255,255,0.95), transparent);color:#06323a}
+
+/* Ensure specific overlay headings use the same dark text color as the third tile */
+.design-item.pattern-vodni .design-overlay h3,
+.design-item.pattern-tropicana .design-overlay h3,
+.design-item.pattern-medene .design-overlay h3{
+  color: #06323a !important;
+}
+
+/* Match medene overlay to the vodni style as requested */
+.design-item.pattern-medene .design-overlay{background:linear-gradient(to top, rgba(255,255,255,0.95), transparent); color: #06323a}
+
+/* Overlay tweaks are unified above (centered pill overlay). Pattern-specific overrides remain as defined.
+  Decorative small dragonflies on designs section background */
+.designs{
+  position: relative;
+  /* oříznout vše, co by mohlo přetékat mimo sekci */
+  overflow: hidden;
+}
+.designs::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-image: url('img/vazka.webp');
+  background-repeat: repeat;
+  background-position: center top;
+  /* větší vzor, vyšší čitelnost */
+  background-size: 100px;
+  /* jemná viditelnost */
+  opacity: 0.12;
+  mix-blend-mode: multiply;
+  filter: contrast(115%) saturate(92%);
+  /* jen drobná rotace, bez scale() aby se nic nepřetékal */
+  transform: rotate(-4deg);
+  transform-origin: center;
+  pointer-events: none;
+  z-index: 0;
+}
+.designs > .container{position:relative;z-index:1}
+
+/* Background photos for the three tiles (fallback to gradients above if missing) */
+.pattern-medene{background-image: url('img/medene-fleky.png'); background-size: cover; background-position: center;}
+.pattern-tropicana{background-image: url('img/tropicana.png'); background-size: cover; background-position: center;}
+.pattern-vodni{background-image: url('img/vodni-balet.png'); background-size: cover; background-position: center;}
+
+/* Photos fallback / readability handled by unified overlay above; specific pattern overrides control local contrast */
+
+/* If an image is missing, keep the gentle patterned gradient as fallback (already set on pattern-* classes)
+  Make sure the white window style is not applied when photo background is present */
+.design-item{background-color:transparent;border:none;box-shadow:none}
+
+@media (max-width: 768px){
+  .design-item{height:260px}
+  .design-item .design-overlay{padding:14px}
+}
+
+/* About Section */
+.about {
+  background-color: #ffffff;
+  /* Make sure the section starts below the fixed header so it doesn't visually overlap the nav */
+  padding-top: calc(var(--site-header-height, 88px) + 8px);
+}
+
+.about-content {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+
+.about-text {
+  flex: 1;
+}
+
+.about-dragonfly {
+  display: none !important; /* hide section-wide motif — we'll place the motif behind the textbox instead */
+}
+
+.dragonfly-medium {
+  width: 120px;
+  height: auto;
+  opacity: 0.4;
+}
+
+.about-paragraph {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 20px;
+  line-height: 1.8;
+}
+
+.about-image {
+  flex: 1;
+  position: relative;
+}
+
+/* ensure text sits above the decorative dragonfly */
+.about-text { position: relative; z-index: 2; }
+
+/* Decorative dragonfly centered behind the text block.
+   Uses a pseudo-element so the motif is constrained to the text area and the text stays above it. */
+.about-text::before{
+  content: "";
+  position: absolute;
+  left: 50%;
+  /* place decorative motif slightly below the heading so it doesn't overlap the sticky header */
+  top: 12px;
+  transform: translateX(-50%) rotate(-6deg);
+  width: 1600px;
+  height: 760px;
+  background-image: url('img/vazka.webp');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+  opacity: 0.16; /* subtle, elegant */
+  filter: grayscale(1) contrast(0.95) blur(0.3px);
+  mix-blend-mode: multiply; /* helps the motif integrate into the white background */
+  pointer-events: none;
+  z-index: 0; /* behind the text inside the box */
+  transition: opacity 240ms ease, transform 220ms ease;
+}
+
+@media (max-width: 1400px) {
+  .about-text::before{
+    width: 1200px;
+    height: 600px;
+    top: 8px;
+    opacity: 0.14;
+    transform: translateX(-50%) rotate(-6deg) scale(0.98);
+  }
+}
+
+@media (max-width: 900px) {
+  .about-text::before{ display: none; }
+}
+
+.about-dragonfly img { width: 100%; height: auto; display: block; filter: grayscale(1); }
+
+@media (max-width: 1400px) {
+  /* scale down for large-but-not-fullwidth screens */
+  .about-dragonfly { width: 18000px; transform: translateX(-56%) rotate(-6deg) scale(1.75); opacity: 0.26; top: -160px; }
+}
+
+@media (max-width: 900px) {
+  /* tablet: keep visible but much smaller */
+  .about-dragonfly { left: 50%; transform: translateX(-50%) rotate(-6deg); width: 900px; opacity: 0.12; top: -10px; }
+}
+
+@media (max-width: 600px) {
+  /* hide heavy decoration on small screens for readability */
+  .about-dragonfly { display: none; }
+  .about-content { gap: 28px; }
+}
+
+.about-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+}
+
+.contact {
+  /* remove the full-width light-blue background band (user requested only that thin strip removed)
+     keep padding and layout so the contact content stays in place; use transparent background */
+  background: transparent;
+  padding: 70px 0 90px;
+  position: relative; /* allow pseudo-element/separator */
+  overflow: visible;
+  color: #08343a; /* darker text for contrast where content needs it */
+}
+
+.contact .container{position:relative; z-index:1}
+
+/* Subtle transition band between previous section and contact section */
+.contact::before{
+  /* subtle thin separator line above the contact section */
+  content: "";
+  position: absolute;
+  top: -18px;
+  left: 6%;
+  right: 6%;
+  height: 2px;
+  pointer-events: none;
+  z-index: 0;
+  border-radius: 2px;
+  /* faint centered gradient to give a soft, non-harsh look */
+  background: linear-gradient(90deg, rgba(255,255,255,0), rgba(29,73,86,0.08), rgba(255,255,255,0));
+  opacity: 0.95;
+}
+
+@media (max-width: 1000px) {
+  .contact::before{ left: 4%; right: 4%; top: -14px; height: 1.5px }
+}
+
+@media (max-width: 480px) {
+  .contact::before{ left: 8%; right: 8%; top: -12px; height: 1px; background: linear-gradient(90deg, rgba(255,255,255,0), rgba(29,73,86,0.06), rgba(255,255,255,0)); }
+}
+
+/* Decorative motifs for the contact section - subtle tiled/positioned svgs */
+.contact::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 0;
+  /* multiple layered motifs (6/7) for a denser decorative background similar to .collection */
+  background-image: url('img/6.svg'), url('img/7.svg'), url('img/6.svg'), url('img/7.svg'), url('img/6.svg'), url('img/7.svg'), url('img/6.svg'), url('img/7.svg');
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+  background-position: left 6% top 8%, right 6% bottom 6%, 20% 18%, 80% 22%, 35% 62%, 65% 66%, 50% 12%, 10% 72%;
+  background-size: 220px, 260px, 180px, 200px, 120px, 140px, 90px, 110px;
+  opacity: 0.12;
+  mix-blend-mode: multiply;
+  filter: contrast(100%) saturate(92%);
+  transform: rotate(-1.6deg);
+}
+
+@media (max-width:1000px){
+  .contact::after{ display:none; }
+}
+
+.contact-content {
+  display: grid;
+  grid-template-columns: 1fr 420px; /* form left, cards right */
+  gap: 36px;
+  align-items: stretch; /* ensure both columns match height */
+}
+
+/* Form card */
+.contact-form{
+  /* keep the form as a white card on top of the blue section for contrast */
+  background: var(--bg1);
+  padding: 42px;
+  border-radius: 18px;
+  box-shadow: 0 18px 40px rgba(3,19,25,0.06);
+  border: 1px solid rgba(6,54,54,0.03);
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* stretch to match right column */
+}
+
+.contact-form .form-label{color:#21343a}
+
+.form-group{margin-bottom:20px}
+
+.form-input{
+  width:100%;
+  padding:14px 16px;
+  border-radius:10px;
+  border:1px solid rgba(3,19,25,0.06);
+  background: #fff;
+  transition: box-shadow .18s ease, border-color .18s ease;
+}
+.form-input:focus{outline:none;box-shadow:0 8px 24px rgba(6,54,54,0.06);border-color:rgba(14,186,180,0.6)}
+textarea.form-input{min-height:140px}
+
+/* Submit button in the contact form: match social button visual (dark pill) but full-width */
+.contact-form .btn-primary{
+  display: block;
+  width: 100%;
+  text-align: center;
+  background: var(--accent); /* same as social buttons */
+  color: var(--bg1);
+  padding: 14px 22px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 18px;
+  border: none;
+  box-shadow: 0 10px 28px rgba(6,54,54,0.08);
+  transition: transform 160ms ease, filter 160ms ease, box-shadow 160ms ease;
+}
+.contact-form .btn-primary:hover{ transform: translateY(-3px); filter: brightness(0.94); box-shadow: 0 14px 36px rgba(6,54,54,0.12); }
+
+/* Right-side stacked cards */
+.contact-info{display:flex;flex-direction:column;gap:20px;height:100%}
+.info-item{
+  background: var(--bg1);
+  padding:22px 26px;
+  border-radius:14px;
+  box-shadow:0 8px 26px rgba(3,19,25,0.03);
+  border:1px solid rgba(29,73,86,0.04);
+  flex: 1; /* make stacked cards split available height */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.info-title{font-size:18px;font-weight:800;margin-bottom:10px;color:var(--accent)}
+.info-text{color:#475f63;font-size:15px}
+.info-text a{color:var(--accent);font-weight:700}
+
+/* Social buttons in right column */
+.social-buttons{display:flex;gap:12px;flex-wrap:wrap}
+.social-button{padding:10px 18px;border-radius:999px}
+
+/* subtle divider between form and cards on large screens */
+.contact-content::after{
+  /* Divider removed per user request: no visible split between form and cards */
+  display: none !important;
+}
+
+@media (max-width:1000px){
+  .contact-content{grid-template-columns:1fr;gap:22px}
+  .contact-content::after{display:none}
+  .contact-form{order:1}
+}
+
+/* Email and phone styling: accent color, hover, responsive sizing */
+.info-text a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 700;
+  display: inline-block;
+  padding: 4px 6px;
+  border-radius: 6px;
+  transition: background-color 160ms ease, color 160ms ease, transform 120ms ease;
+}
+.info-text a:hover,
+.info-text a:focus {
+  background-color: rgba(110,198,192,0.12); /* subtle accent background */
+  color: #05756f; /* slightly darker accent on hover for contrast */
+  transform: translateY(-1px);
+}
+
+/* Make phone/email more prominent on small screens */
+@media (max-width: 768px) {
+  .info-text { font-size: 18px; }
+  .info-text a { font-size: 18px; padding: 6px 8px; }
+}
+
+.social-links {
+  display: flex;
+  gap: 20px;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 20px;
+  background-color: var(--accent);
+  color: var(--bg1);
+  text-decoration: none;
+  border-radius: 20px;
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+
+.social-link svg{ flex:0 0 auto; width:18px; height:18px; color: currentColor }
+
+.social-link:hover {
+  background-color: var(--pink);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* Light pink outline for contact tiles (subtle) */
+.contact .info-item,
+.contact .contact-form{
+  /* use dark accent (approx rgb(29,73,86)) for subtle framed look */
+  border-color: rgba(29,73,86,0.12) !important; /* softened accent */
+  box-shadow: 0 8px 26px rgba(3,19,25,0.03), 0 6px 18px rgba(29,73,86,0.03);
+  transition: box-shadow 180ms ease, border-color 160ms ease, transform 160ms ease;
+}
+.contact .info-item:hover,
+.contact .contact-form:hover{
+  border-color: rgba(29,73,86,0.22) !important;
+  box-shadow: 0 18px 44px rgba(29,73,86,0.06), 0 12px 36px rgba(3,19,25,0.06);
+  transform: translateY(-2px);
+}
+
+/* Contact page: make the form primary button and contact links match the social buttons color
+   and turn pink on hover as requested */
+.contact .btn-primary{
+  background-color: var(--accent) !important;
+  color: var(--bg1) !important;
+  border: none;
+  box-shadow: 0 10px 28px rgba(6,54,54,0.08);
+}
+.contact .btn-primary:hover{
+  background-color: var(--pink) !important;
+  color: #fff !important;
+  transform: translateY(-2px);
+}
+
+.contact .info-text a{
+  /* Keep email/phone as plain inline text, colored like social buttons */
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 700;
+  transition: color 160ms ease, transform 120ms ease;
+  background: none;
+  padding: 0;
+}
+.contact .info-text a:hover,
+.contact .info-text a:focus{
+  color: var(--pink);
+  transform: translateY(-1px);
+}
+
+/* Footer */
+.footer {
+  background-color: var(--accent);
+  color: var(--bg1);
+  padding: 80px 0 34px; /* více prostoru nahoře pro velký název */
+  position: relative;
+  overflow: hidden;
+}
+
+.footer-grid{
+  display: grid;
+  /* top row: brand spans full width, second row: four columns */
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: auto;
+  gap: 40px 36px;
+  align-items: start;
+  max-width: 1100px;
+  margin: 0 auto 18px;
+  padding: 0 18px;
+  justify-items: center; /* center each grid cell horizontally */
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  justify-content: center;
+}
+
+.footer-dragonfly {
+  height: 40px;
+  width: auto;
+  filter: brightness(0) invert(1);
+}
+
+.footer-brand {
+  font-family: 'Dancing Script', cursive;
+  font-size: 88px; /* výrazně větší */
+  font-weight: 700;
+  color: var(--bg2); /* light cyan for contrast */
+  transform: translateY(var(--footer-brand-offset, 0px));
+  transition: transform 180ms ease, opacity 220ms ease;
+  letter-spacing: 0.2px;
+  line-height: 0.9;
+}
+
+.footer-desc{
+  color: #d7eaea;
+  margin-top: 8px;
+  line-height: 1.5;
+}
+
+/* Decorative large dragonfly across footer */
+.footer::before{
+  content: "";
+  position: absolute;
+  left: -180px; /* část vzoru vlevo, za logem */
+  bottom: -60px;
+  width: 1100px;
+  height: 640px;
+  background-image: url('img/vazka.webp');
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: contain;
+  opacity: 0.06; /* jemnější */
+  filter: grayscale(1) contrast(0.9) brightness(0.95);
+  transform: rotate(-6deg);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.footer-grid, .footer-bottom{position:relative;z-index:1}
+
+/* Place brand visually centered on its own top row */
+.footer-col--brand{ grid-column: 1 / -1; padding-bottom: 6px; }
+.footer-col--links{ grid-column: 1 / 2; justify-self: center; }
+.footer-col--social{ grid-column: 2 / 3; justify-self: center; }
+.footer-col--contact{ grid-column: 3 / 4; justify-self: center; }
+.footer-col--meta{ grid-column: 4 / 5; justify-self: center; }
+
+/* Keep content inside each column left-aligned for readability, but the column itself is centered */
+.footer-col--links .footer-nav,
+.footer-col--contact,
+.footer-col--social,
+.footer-col--meta { text-align: left; max-width: 300px; width: 100%; }
+
+.footer-col--social .social-buttons{display:flex;flex-direction:column;gap:10px;margin-top:6px}
+.social-button{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 16px;
+  border-radius:999px;
+  background: var(--bg1);
+  color: var(--accent);
+  text-decoration:none;
+  font-weight:700;
+  box-shadow:0 8px 20px rgba(6,54,54,0.08);
+  width:max-content;
+}
+.social-button svg{color:currentColor;flex:0 0 auto}
+.social-button span{color:currentColor}
+.social-button:hover{
+  /* Stay static; only change color on hover */
+  transform:none;
+  filter:none;
+  background-color: var(--bg1); /* keep white background */
+  color: var(--pink);
+}
+
+/* Hero CTAs should reuse the social-button visual language but be larger and more prominent */
+.hero-actions .social-button.hero-cta{
+  padding:14px 36px;
+  font-size:18px;
+  border-radius:999px;
+  /* match footer social-button: white background, dark accent text */
+  background: var(--bg1);
+  color: var(--accent);
+  box-shadow: 0 8px 20px rgba(6,54,54,0.08);
+  gap:12px;
+  border: none;
+}
+.hero-actions .social-button.hero-cta:hover{
+  transform:translateY(-2px);
+  /* keep background white, change text to pink to match footer hover behavior */
+  background: var(--bg1);
+  color: var(--pink);
+}
+
+/* Accent CTA used across pages: base color like the cart button, hover to pink */
+.btn-accent{
+  display:inline-block;
+  padding:12px 28px;
+  border-radius:999px;
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  font-weight:700;
+  box-shadow: 0 12px 36px rgba(6,54,54,0.12);
+  border: none;
+  transition: transform 160ms ease, background 160ms ease, box-shadow 160ms ease;
+}
+.btn-accent:hover{
+  transform: translateY(-3px);
+  background: var(--pink);
+  color: #fff;
+  box-shadow: 0 18px 48px rgba(244,168,196,0.12);
+}
+
+.footer-col .footer-heading{
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+.footer-nav{list-style:none;padding:0;margin:0}
+.footer-nav li{margin-bottom:8px}
+.footer-nav a.footer-link{color:#cfeff0}
+.footer-nav a.footer-link:hover{color:var(--pink)}
+
+.footer-social{margin-top:12px;display:flex;gap:10px}
+
+.footer-address{color:#d7eaea;line-height:1.5}
+.footer-contact a.footer-link{display:inline-block;color:#cfeff0}
+.footer-contact a.footer-link:hover{color:var(--pink)}
+.footer-meta{color:#93a9a9;margin-top:8px}
+
+
+.footer-bottom{
+  border-top: 1px solid rgba(255,255,255,0.04);
+  padding-top: 18px;
+  max-width:1100px;
+  margin:0 auto;
+  padding-left:12px;
+  padding-right:12px;
+  display:flex;
+  justify-content:center; /* center the copyright / legal */
+  gap:24px;
+  align-items:center;
+  color:#9aa8a8;
+  font-size:14px;
+  text-align: center;
+}
+
+.footer-legal{color:#7f8b8b}
+
+.footer-link{color:#cfeff0;text-decoration:none;transition:color 0.2s ease}
+.footer-link:hover{color:var(--pink)}
+
+.footer-copyright{color:#9aa8a8;font-size:14px}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .nav { display: none; }
+
+  .hero-content { flex-direction: column; text-align: center; }
+  .hero-title { font-size: 36px; }
+  .hero-subtitle { font-size: 18px; }
+
+  .collection-grid { grid-template-columns: 1fr; }
+  .about-content { flex-direction: column; }
+  .contact-content { grid-template-columns: 1fr; }
+  .section-title { font-size: 32px; }
+
+  /* Footer - mobile-friendly adjustments */
+  .footer{
+    padding: 48px 0 20px; /* reduce top padding and tighten */
+  }
+  .footer::before{ display:none; } /* hide large decorative dragonfly on small screens */
+  .footer-grid{ grid-template-columns:1fr; gap:18px; justify-items:center; padding:0 18px }
+  .footer-brand{ font-size:36px; line-height:1; text-align:center }
+  .footer-logo{ justify-content:center }
+  .footer-dragonfly{ height:28px; opacity:0.85 }
+
+  /* make each footer column span full width and center content */
+  .footer-col--links,
+  .footer-col--social,
+  .footer-col--contact,
+  .footer-col--meta{ grid-column:1 / -1; justify-self:center; text-align:center; }
+
+  .footer-col--links .footer-nav,
+  .footer-col--contact,
+  .footer-col--social,
+  .footer-col--meta { max-width: 100%; }
+
+  /* social buttons: stack vertically on mobile for easier tapping */
+  .footer-col--social .social-buttons{ flex-direction:column; gap:12px; align-items:center }
+
+  .footer-bottom{ flex-direction:column; gap:8px; text-align:center }
+}
+
+/* Mobile: stack homepage hero buttons vertically and make them full-width */
+@media (max-width: 768px) {
+  .hero-actions {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 12px !important;
+    width: 100% !important;
+    padding-left: 6% !important;
+    padding-right: 6% !important;
+  }
+
+  .hero-actions .social-button.hero-cta,
+  .hero-actions .btn,
+  .hero-actions .btn-primary,
+  .hero-actions .btn-secondary,
+  .hero-actions .hero-cta {
+    display: inline-flex !important;
+    width: 100% !important;
+    max-width: 420px !important;
+    justify-content: center !important;
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Slightly reduce font-size on very small screens to avoid overflow */
+  @media (max-width: 420px) {
+    .hero-actions .social-button.hero-cta,
+    .hero-actions .btn,
+    .hero-actions .btn-primary,
+    .hero-actions .btn-secondary { padding-left: 14px !important; padding-right: 14px !important; }
+  }
+}
+
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 28px;
+  }
+
+  .section-title {
+    font-size: 28px;
+  }
+
+  .card-content {
+    padding: 20px;
+  }
+
+  .contact-form {
+    padding: 25px;
+  }
+}
+
+/* Mobile: center footer sections (Rychlé odkazy and similar) to improve readability */
+@media (max-width: 768px) {
+  .footer-col--links,
+  .footer-col--social,
+  .footer-col--contact,
+  .footer-col--meta {
+    grid-column: 1 / -1 !important;
+    justify-self: center !important;
+    text-align: center !important;
+  }
+
+  /* Ensure the nav list items are stacked and centered */
+  .footer-col--links .footer-nav,
+  .footer-col--links .footer-nav li {
+    display: block !important;
+    width: 100% !important;
+    text-align: center !important;
+  }
+
+  .footer-col--links .footer-nav a,
+  .footer-col--links .footer-link {
+    display: inline-block !important;
+    margin: 6px 0 !important;
+    text-align: center !important;
+  }
+
+  /* If there are small headings inside the column, center them too */
+  .footer-col--links .footer-heading,
+  .footer-col--links .page-title,
+  .footer-col--links h3 {
+    text-align: center !important;
+  }
+}
+
+
+.product { gap: 32px; }
+/* Product page layout: desktop -> gallery on the right, meta on the left. */
+.product {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+  /* default for wide screens: put gallery to the left (gallery first) */
+  flex-direction: row;
+}
+/* sizing: gallery column fixed-ish, meta flexible */
+.product .gallery-card { flex: 0 0 480px; max-width: 480px; width: 480px; overflow: hidden; }
+.product .product-meta { flex: 1 1 0; min-width: 260px; }
+.product .card { padding: 20px; }
+.gallery-card { display:flex; flex-direction:column }
+.product .main-img { height:520px; display:flex; align-items:center; justify-content:center; background:#f6f6f8; width:100%; }
+.product .main-img img { width:100%; height:100%; object-fit:cover; border-radius:12px; display:block }
+.thumbs { margin-top:12px; gap:12px; display:flex }
+.thumbs img { width:84px; height:84px; flex:0 0 84px; border-radius:10px; box-shadow:0 6px 18px rgba(2,8,10,0.06); cursor:pointer; border:3px solid transparent; object-fit:cover; display:block }
+.thumbs img.active{ border-color:var(--accent) }
+.product-meta h1 { font-size:22px; margin-bottom:6px }
+.product-meta .price { font-size:22px; color:var(--pink-contrast); font-weight:800 }
+.product-meta .badge { display:inline-block; background:var(--pink); color:var(--pink-contrast); padding:6px 10px; border-radius:999px; font-weight:700; margin-right:8px }
+.meta-row { display:flex; gap:12px; align-items:center }
+.rating { color:#ffb400; margin-left:6px }
+.quantity { display:flex; gap:8px; align-items:center; margin-top:8px }
+.quantity input[type="number"]{width:70px;padding:8px;border-radius:8px;border:1px solid #ddd}
+.tabs { margin-top:18px; border-top:1px solid #eee; padding-top:14px }
+.tabs .tab {
+  background: transparent;
+  border: none;
+  padding: 8px 18px; /* a bit wider so both buttons match visually */
+  border-radius: 12px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 120px; /* ensures equal widths */
+  font-weight: 700; /* keep weight constant to avoid width jumps */
+  line-height: 1;
+  transition: background 180ms ease, color 180ms ease, transform 120ms ease;
+  box-sizing: border-box;
+}
+.tabs .tab.active {
+  background: var(--accent-light);
+  color: var(--accent);
+  /* keep font-weight unchanged to prevent reflow */
+}
+
+@media (max-width: 720px) {
+  .tabs .tab { min-width: 0; padding: 8px 12px; }
+}
+.tab-content { margin-top:12px }
+.specs { margin-top:8px; color:var(--muted) }
+
+/* Ensure small helper lines like shipping / returns and the 'Velikosti' label keep fixed sizing
+   and don't scale/wrap unexpectedly which can cause layout shifts */
+body.product-page .product-meta .muted{
+  font-size:16px; /* fixed pixel size to avoid scaling */
+  line-height:1.4;
+  color:var(--muted);
+  white-space:nowrap; /* keep the two items on a single line */
+  flex:0 0 auto; /* avoid flex-based shrinking/growing */
+}
+
+/* If the content is too long on very small screens, allow graceful truncation */
+@media(max-width:420px){
+  body.product-page .product-meta .muted{white-space:normal;overflow:hidden;text-overflow:ellipsis}
+}
+
+/* Ensure product page content sits clearly below the fixed header/nav */
+body.product-page main > .container {
+  /* reserve header height + small extra spacing */
+  padding-top: calc(var(--site-header-height, 88px) + 22px);
+  /* make sure the product block doesn't hug the top */
+  padding-bottom: 28px;
+}
+
+/* Slight vertical alignment rule for large screens */
+@media (min-width: 1000px) {
+  body.product-page .product { align-items: flex-start; }
+}
+
+/* Breadcrumb styling — designově sladěné s výběrem velikostí a počtem */
+nav[aria-label="Breadcrumb"]{
+  display:inline-flex;
+  gap:10px;
+  align-items:center;
+  background: var(--bg1);
+  padding:8px 12px;
+  border-radius:12px;
+  border:1px solid rgba(2,16,18,0.04);
+  box-shadow: 0 8px 20px rgba(2,8,10,0.04);
+  color: var(--muted);
+}
+nav[aria-label="Breadcrumb"] a{
+  color: var(--pink-contrast);
+  font-weight:700;
+  text-decoration:none;
+  padding:4px 6px;
+  border-radius:8px;
+}
+nav[aria-label="Breadcrumb"] a:hover{
+  background: var(--pink-light);
+}
+nav[aria-label="Breadcrumb"] span{
+  color: var(--accent);
+  font-weight:600;
+  padding:4px 8px;
+  border-radius:8px;
+  background: transparent; /* keep subtle */
+}
+/* make separator (›) a bit muted and spaced */
+nav[aria-label="Breadcrumb"] { font-size:16px }
+nav[aria-label="Breadcrumb"]::before{content:''}
+
+@media(max-width:720px){
+  nav[aria-label="Breadcrumb"]{ padding:6px 10px; gap:8px; font-size:15px }
+}
+.product .card { padding: 20px; }
+.gallery-card { display:flex; flex-direction:column }
+.product .main-img { height: 520px; display:flex; align-items:center; justify-content:center; background:#f6f6f8 }
+.product .main-img img { max-height:100%; width:auto; border-radius:10px }
+.thumbs { margin-top:12px; gap:12px; display:flex }
+.thumbs img { width:72px; height:72px; border-radius:8px; box-shadow:0 6px 18px rgba(2,8,10,0.06); cursor:pointer; border:2px solid transparent }
+.thumbs img.active{ border-color:var(--accent) }
+.product-meta h1 { font-size:22px; margin-bottom:6px }
+.product-meta .price { font-size:22px; color:var(--pink-contrast); font-weight:800 }
+.product-meta .badge { display:inline-block; background:var(--pink); color:var(--pink-contrast); padding:6px 10px; border-radius:999px; font-weight:700; margin-right:8px }
+.meta-row { display:flex; gap:12px; align-items:center }
+.rating { color:#ffb400; margin-left:6px }
+.quantity { display:flex; gap:8px; align-items:center; margin-top:8px }
+.quantity input[type="number"]{width:70px;padding:8px;border-radius:8px;border:1px solid #ddd}
+.tabs { margin-top:18px; border-top:1px solid #eee; padding-top:14px }
+.tabs .tab { background:transparent;border:none;padding:8px 12px;border-radius:8px;cursor:pointer }
+.tabs .tab.active { background:var(--accent-light); color:var(--accent); font-weight:700 }
+.tab-content { margin-top:12px }
+.specs { margin-top:8px; color:var(--muted) }
+
+@media (max-width:900px){
+  /* keep a fixed visible main image height on smaller screens but allow width to fill container */
+  .product .gallery-card { flex-basis: 100%; width: 100%; max-width: 100%; }
+  .product .main-img{height:460px}
+  .thumbs img{width:64px;height:64px;flex:0 0 64px}
+  /* On smaller screens show images first (top) and details below */
+  .product { flex-direction: column; }
+}
+
+/* ---------- Mobile stacking enforcement for product pages ---------- */
+@media (max-width: 900px) {
+  /* Force any product layout into a vertical stack on narrow screens */
+  body.product-page .product,
+  .product-page .product,
+  .product-main,
+  .product {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 16px !important;
+    width: 100% !important;
+  }
+
+  /* Ensure gallery column fills width */
+  body.product-page .product .gallery-card,
+  body.product-page .gallery-card,
+  .product .gallery-card,
+  .product-gallery,
+  .gallery-card {
+    flex-basis: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Ensure info/meta column also fills width and doesn't keep min-width */
+  body.product-page .product .product-meta,
+  body.product-page .product-meta,
+  .product .product-meta,
+  .product-info,
+  .product-meta {
+    flex: 0 0 auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important; /* allow shrinking */
+  }
+
+  /* Make main image responsive in height so it doesn't push text to the side */
+  .product .main-img { height: auto !important; max-height: none !important; }
+  .product .main-img img { width: 100% !important; height: auto !important; object-fit: cover !important; }
+
+  /* Ensure thumbnails row wraps / scrolls naturally */
+  .thumbs { flex-wrap: nowrap; overflow-x: auto; }
+
+  /* Clear floating/absolute behaviors that might keep elements horizontally aligned */
+  .product * { clear: none; }
+}
+
+/* --- Enforce vertical stacking and order for product meta on mobile --- */
+@media (max-width: 900px) {
+  /* Make meta/info area a clear vertical stack */
+  .product-meta,
+  .product-info,
+  .product-body,
+  .product-main > .product-meta,
+  body.product-page .product-meta {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    justify-content: flex-start !important;
+    gap: 10px !important;
+    width: 100% !important;
+  }
+
+  /* Normalize inline/no-wrap text that kept items side-by-side */
+  body.product-page .product-meta .muted,
+  .product-meta .muted,
+  .product-meta .meta-row {
+    white-space: normal !important;
+    flex: 0 0 auto !important;
+  }
+
+  /* Ensure key parts take full width and appear in desired order */
+  .product-meta .product-title,
+  .product-meta h1,
+  .product-title { order: 1 !important; width: 100% !important; display: block !important; }
+
+  .product-meta .price,
+  .product-meta .product-price,
+  .price { order: 2 !important; width: 100% !important; display: block !important; }
+
+  /* Sizes and color selectors should stack under price */
+  .product-meta .sizes,
+  .sizes,
+  .size-tiles,
+  .size-tile { order: 3 !important; width: 100% !important; display: block !important; }
+
+  .product-meta .colors,
+  .colors,
+  .color-btn { order: 4 !important; width: 100% !important; display: flex !important; flex-wrap: wrap !important; gap: 8px !important; }
+
+  /* CTAs full-width and last */
+  .product-cta,
+  .product-meta .product-cta,
+  .product-cta .btn,
+  .product-cta .btn-primary,
+  .product-cta .btn-accent,
+  .add-cart { order: 5 !important; width: 100% !important; display: block !important; }
+
+  /* Remove horizontal scroll caused by long inline elements */
+  .product-page, .product, .product * { max-width: 100% !important; box-sizing: border-box !important; }
+}
+
+
+/* ------------------------------------------------------------------ */
+
+/* Mobile: simple hamburger + dropdown nav */
+.menu-toggle{display:none;background:none;border:0;font-size:20px;padding:8px;cursor:pointer;color:var(--accent)}
+.menu-toggle .menu-icon{font-size:20px;line-height:1}
+
+@media (max-width:880px){
+  .menu-toggle{display:inline-flex;align-items:center;gap:6px}
+  .header{position:fixed;top:0;left:0;right:0}
+  .header .container{position:relative}
+  /* hide default horizontal nav on small screens, show when header has .header--open */
+  .nav{display:none}
+  .header--open .nav{
+    display:flex;
+    position:absolute;
+    left:0;
+    right:0;
+    top:100%;
+    background:#fff;
+    flex-direction:column;
+    gap:0;
+    padding:10px 20px;
+    box-shadow:0 8px 28px rgba(0,0,0,0.12);
+    z-index:1150;
+  }
+  .header--open .nav .nav-link{padding:12px 8px;border-bottom:1px solid rgba(0,0,0,0.06)}
+  .header--open .nav .nav-link:last-child{border-bottom:0}
+  /* keep cart compact */
+  .cart-button{margin-left:8px}
+  .header-content{gap:8px}
+  .logo img{height:40px}
+}
+
